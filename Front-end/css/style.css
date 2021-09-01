@@ -38,6 +38,8 @@ a {
     background: lightgray;
     display: flex;
     align-items: center;
+    overflow: hidden;
+    height: 495px;
 }
 .uh_img {
     width:  50%;
@@ -49,6 +51,16 @@ a {
 }
 .uh_pres h2 {
     padding: 0 1em;
+}
+
+main {
+
+    height: 800px;
+}
+
+footer {
+    background: #6b481c;
+    height: 200px;
 }
 
 
