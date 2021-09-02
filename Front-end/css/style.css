@@ -49,23 +49,23 @@ a {
     object-fit: cover;
 }
 .under_header {
-    height: 600px;
+    background-image: url("https://cdn.shopify.com/s/files/1/0323/8346/7653/files/Nikon_F3_Edits-7818_1950x.jpg?v=1614875369");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10rem 0rem;
 }
 
-.uh_img {
-    position: relative;
-}
-.uh_img_text_cont {
+.uh_cont {
     text-align: center;
-    position: absolute;
-    top: 30%;
-    left: 30%;
-    color: white;
+    color: #ffffff;
+    margin: 0 auto;
+    
 }
-.uh_img_text_cont h2 {
+
+.uh_cont h2 {
     font-size: 3em;
 }
-.uh_img_text_cont p{
+.uh_cont p{
     font-size: 1.3em;
     padding-bottom: 1em;
 }
