@@ -144,10 +144,9 @@ main h2 {
     flex-direction: column;
     border-radius: 15px;
     height: 320px;
-    border: 2px solid white;
     width: 25%;
     margin: 3em 2em;
-    background-color: #ffcf00;     
+    background-color: rgb(255 255 255);    
 }
 .container_elt:hover {
     transform: scale(1.03);
