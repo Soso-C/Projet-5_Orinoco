@@ -20,7 +20,7 @@ a {
     justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
-    padding: 0.5em 5em;
+    padding: 0.5em 3em;
     color: rgb(0, 0, 0);
 }
 
@@ -43,13 +43,8 @@ a {
 
 /* HEADER */
 
-.img_header {
-    height: 600px;
-    width: 100%;
-    object-fit: cover;
-}
 .under_header {
-    background-image: url("https://cdn.shopify.com/s/files/1/0323/8346/7653/files/Nikon_F3_Edits-7818_1950x.jpg?v=1614875369");
+    background-image: url("https://www.missnumerique.com/blog/wp-content/uploads/selection-panasonic-lumix-ouverture.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     padding: 10rem 0rem;
@@ -58,8 +53,7 @@ a {
 .uh_cont {
     text-align: center;
     color: #ffffff;
-    margin: 0 auto;
-    
+    margin: 0 auto;    
 }
 
 .uh_cont h2 {
@@ -76,17 +70,22 @@ a {
     font-weight: 500;
     background: #ffffff;
 }
+.btn:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
 
 /* MAIN */
 
 main {
     background: #DCDCDC;
 }
-.container {
+.list_article {
     height: 1000px;
 }
 
 /* FOOTER */
+
 footer {
     background: #ffffff;
     margin: 2em;
