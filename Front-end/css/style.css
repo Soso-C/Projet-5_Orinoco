@@ -79,7 +79,7 @@ a {
     flex-direction: column;
     align-items: center;
 }
-.top_header a:hover {
+#home_elt:hover, #cart_elt:hover {
     transform: scale(1.03);
 }
 
