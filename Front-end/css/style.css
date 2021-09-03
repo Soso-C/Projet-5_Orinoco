@@ -112,7 +112,7 @@ a {
     border-radius: 30px;
     border-color: transparent;
     font-weight: 500;
-    background: #ffffff;
+    background: yellow;
 }
 .btn:hover {
     cursor: pointer;
@@ -145,8 +145,9 @@ main h2 {
     height: 320px;
     border: 2px solid white;
     width: 25%;
-    margin: 3em 2em;  
-    background: white;  
+    margin: 3em 2em;
+    background-color: yellow;  
+    
 }
 
 .img_article {
@@ -155,11 +156,17 @@ main h2 {
     object-fit: cover;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    background: white;
 }
 .art_name_price {
     display: flex;
     justify-content: space-between;
     padding: 0 1em;
+}
+.art_name_price p {
+    color: black;
+    font-size: 1.1em;
+    font-weight: 600;
 }
 
 /* FOOTER */
