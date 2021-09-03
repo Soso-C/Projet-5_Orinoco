@@ -123,17 +123,43 @@ a {
 
 main {
     background: #000000;
+    padding-bottom: 2em;
 }
-.container {
-    height: 1000px;
-    display: flex;
-    flex-wrap: wrap;
-}
-.container h2 {
+main h2 {
+    text-align: center;
     margin: 0 auto;
     padding-top: 2.5em;
+    padding-bottom: 1em;
     font-size: 2em;
     color: white;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.container_elt{
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    height: 320px;
+    border: 2px solid white;
+    width: 25%;
+    margin: 3em 2em;  
+    background: white;  
+}
+
+.img_article {
+    height: 260px;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.art_name_price {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1em;
 }
 
 /* FOOTER */
