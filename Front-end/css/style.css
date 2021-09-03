@@ -86,9 +86,10 @@ a {
 /* HEADER */
 
 .under_header {
-    background-image: url("https://www.missnumerique.com/blog/wp-content/uploads/selection-panasonic-lumix-ouverture.jpg");
+    background-image: url("https://dmscncrouters.com/wp-content/uploads/2020/11/AdobeStock_246144330-scaled.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     padding: 10rem 0rem;
 }
 
@@ -109,6 +110,7 @@ a {
     font-size: 1.3em;
     padding: 0.6em;
     border-radius: 30px;
+    border-color: transparent;
     font-weight: 500;
     background: #ffffff;
 }
