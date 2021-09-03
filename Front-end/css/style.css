@@ -147,7 +147,7 @@ main h2 {
     border: 2px solid white;
     width: 25%;
     margin: 3em 2em;
-    background-color: yellow;     
+    background-color: #ffcf00;     
 }
 .container_elt:hover {
     transform: scale(1.03);
