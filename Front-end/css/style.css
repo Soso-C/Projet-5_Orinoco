@@ -13,6 +13,29 @@ a {
     text-decoration: none;
 }
 
+/* Animation CSS */
+
+@-webkit-keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  
 /* Top et NAV BAR */
 
 .top_header {
@@ -40,6 +63,7 @@ a {
     display: flex;
     align-content: center;
     align-items: flex-end;
+    font-size: 1.1em;
 }
 
 .top_nav a {
@@ -55,8 +79,8 @@ a {
     flex-direction: column;
     align-items: center;
 }
-#cart_elt:hover {
-    color: grey;
+.top_header a:hover {
+    transform: scale(1.03);
 }
 
 /* HEADER */
@@ -96,7 +120,7 @@ a {
 /* MAIN */
 
 main {
-    background: #DCDCDC;
+    background: #00000014;
 }
 .list_article {
     height: 1000px;
@@ -120,6 +144,11 @@ footer a {
     color: black;
     margin-right: 0.5em;
     margin-left: 0.5em;
+}
+
+footer a:hover {
+    -webkit-animation: rotate-center 0.6s ease-in-out both;
+    animation: rotate-center 0.6s ease-in-out both;
 }
 
 
