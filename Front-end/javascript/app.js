@@ -27,7 +27,8 @@ fetch(url)
         console.log(image)       
         console.log(lense)       
         document.getElementsByClassName("name_article")[i].innerHTML = name;
-        document.getElementsByClassName("price_article")[i].innerHTML = price / 100 +"€";
+        // document.getElementsByClassName("price_article")[i].innerHTML = price / 100 +"€";
+        document.getElementsByClassName("desc_article")[i].innerHTML = desc;
         i++
     }    
   })
