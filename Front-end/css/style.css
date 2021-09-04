@@ -126,7 +126,7 @@ main {
     background: #000000;
     padding-bottom: 2em;
 }
-main h2 {
+#h2_ancre {
     text-align: center;
     margin: 0 auto;
     padding-top: 2.5em;
@@ -190,6 +190,12 @@ main h2 {
     margin-bottom: 0;
 }
 
+.price_article {
+    padding: 0;
+    margin-top: 0;
+    font-weight: 900;
+}
+
 .container_elt a{
     margin: 0 auto;
 }
@@ -234,4 +240,40 @@ footer a:hover {
     animation: rotate-center 0.6s ease-in-out both;
 }
 
+/* Page Produit */
+
+.main_product {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container_product {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+    background: white;
+    border-radius: 30px;
+}
+
+.img_product {
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.title_product {
+    text-align: center;
+    color: black;
+}
+
+.desc_product {
+    color: black;
+}
+.bloc_p_t_quant{
+    display: flex;
+}
 
