@@ -117,7 +117,7 @@ a {
 }
 .btn:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 /* MAIN */
@@ -139,6 +139,9 @@ main h2 {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+/* Articles */
+
 .container_elt{
     display: flex;
     flex-direction: column;
@@ -167,7 +170,7 @@ main h2 {
 .art_name_price {
     display: flex;
     justify-content: space-between;
-    padding: 0 0em;
+    padding: 0 0;
     flex-direction: column;
     text-align: center;
     margin-bottom: 0;
@@ -190,9 +193,12 @@ main h2 {
 .container_elt a{
     margin: 0 auto;
 }
+
+/*Bouton Acheter */
+
 .btn_test {
     border-color: transparent;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: yellow;
     padding: 10px;
     font-size: 1.1em;
@@ -222,6 +228,7 @@ footer a {
     margin-left: 0.5em;
 }
 
+/* Animation footer */
 footer a:hover {
     -webkit-animation: rotate-center 0.6s ease-in-out both;
     animation: rotate-center 0.6s ease-in-out both;
