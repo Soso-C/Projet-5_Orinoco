@@ -151,10 +151,10 @@ main h2 {
     box-shadow: 0px 0px 5px 1px #ffffff;
 }   
 
-.container_elt:hover {
+/* .container_elt:hover {
     transform: scale(1.03);
     transition: ease 0.3s;
-}
+} */
 
 .img_article {
     height: 200px;
@@ -201,6 +201,7 @@ main h2 {
 }
 .btn_test:hover {
     cursor: pointer;
+    opacity: 0.8;
 }
 
 /* FOOTER */
