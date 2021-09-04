@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap');
 
 * {
     font-family: 'Roboto', sans-serif;
@@ -48,7 +49,7 @@ a {
 }
 
 .top_header h1 {
-    font-family: 'Font Awesome 5 Free'
+    font-family: 'Marcellus SC', serif;
 }
 
 .top_header i {
@@ -116,8 +117,7 @@ a {
 }
 .btn:hover {
     cursor: pointer;
-    transform: scale(1.03);
-    transition: ease 0.3s;
+    opacity: 0.5;
 }
 
 /* MAIN */
@@ -146,8 +146,10 @@ main h2 {
     height: 320px;
     width: 25%;
     margin: 3em 2em;
-    background-color: rgb(255 255 255);    
-}
+    background-color: rgb(255 255 255); 
+    box-shadow: 0px 0px 5px 1px #ffffff;
+}   
+
 .container_elt:hover {
     transform: scale(1.03);
     transition: ease 0.3s;
