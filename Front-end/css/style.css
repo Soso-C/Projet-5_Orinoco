@@ -3,6 +3,7 @@
 
 * {
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -275,5 +276,14 @@ footer a:hover {
 }
 .bloc_p_t_quant{
     display: flex;
+    align-items: center;
+}
+
+.quant_nmb{
+    display: flex;
+    align-items: center;
+}
+select {
+    height: 2em;
 }
 

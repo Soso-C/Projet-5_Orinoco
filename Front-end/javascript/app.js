@@ -31,6 +31,7 @@ function displayArticle(article){
         <p class="name_article">${article.name}</p>
         <p class="desc_article">${article.description}</p>
         <p class="price_article">${article.price / 100}€</p>
+        
     </div>
     <a href="produit.html?id=${article._id}"><button type="submit" class="btn_test">Acheter</button></a>
   </div>`         
