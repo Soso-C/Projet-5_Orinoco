@@ -31,20 +31,20 @@ function hyrdrateArticle(article) {
     <div class="quant_nmb">
     <p class="lent" >Lentilles :</p>
     <select name="p_quant">
-        <option> ${article.lenses}
+        <option> ${article.lenses[0]}
         <option> ${article.lenses[1]}
     <select>
     </div>
     <div class="bloc_p_t_quant">
         <div class="quant_nmb">
             <p class="quant">Quantitée :</p>
-            <form class="btn_-_+">
+            <form class="btn_i_d">
                 <input id="decrease" type="button" value="-"/>
                 <input id="result" type="texte" value="1" maxlength="2"/>
                 <input id="increase" type="button" value="+"/>
             </form>
-        </div>
-        <p class="price_product">Prix : ${article.price / 100}€</p>    
+        </div> 
+        <p class="price_product">Prix : ${article.price / 100}€</p>   
     </div> 
     <div class="btn_price">
         <a href="#"><button type="submit" class="btn_test2">Ajouter au panier</button></a>
