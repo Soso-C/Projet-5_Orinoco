@@ -344,8 +344,15 @@ select {
     display: flex;
     justify-content: center;
 }
+
+#decrease, #increase {
+    background: yellow;
+}
+
+
 .btn_i_d input {
     height: 2em;
     width: 2em;
     text-align: center;
+    font-weight: 700;
 }

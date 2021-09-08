@@ -21,6 +21,9 @@ function getArticle(articleId){
 }
 
 function hyrdrateArticle(article) {
+
+    const lens = createLenses(article.lenses);
+
     document.getElementById("test1").innerHTML +=
     `
     <div><img class="img_product" src="${article.imageUrl}" alt=""></div>
@@ -31,8 +34,7 @@ function hyrdrateArticle(article) {
     <div class="quant_nmb">
     <p class="lent" >Lentilles :</p>
     <select name="p_quant">
-        <option> ${article.lenses[0]}
-        <option> ${article.lenses[1]}
+        ${lens}
     <select>
     </div>
     <div class="bloc_p_t_quant">
@@ -48,8 +50,17 @@ function hyrdrateArticle(article) {
     </div> 
     <div class="btn_price">
         <a href="#"><button type="submit" class="btn_test2">Ajouter au panier</button></a>
-    </div>`
-    
+    </div>`     
+}
+
+// Fonction qui retourne ma liste de lenses.
+
+function createLenses(lenses) {
+    option = "";
+    for (elt of lenses) {
+       option += `<option class="opt_lens"> ${elt}`
+    }
+    return option
 }
 
 // Button + - //
@@ -57,3 +68,8 @@ function hyrdrateArticle(article) {
 let res = document.getElementById('result');
 let plus = document.getElementById('increase');
 let moins = document.getElementById('decrease');
+
+
+
+
+
