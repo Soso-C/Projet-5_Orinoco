@@ -42,7 +42,7 @@ function hyrdrateArticle(article) {
             <p class="quant">Quantitée :</p>
             <form class="btn_i_d">
                 <input id="decrease" type="button" value="-"/>
-                <input id="result" type="texte" value="1" maxlength="2"/>
+                <input id="result" type="text" value="1"/>
                 <input id="increase" type="button" value="+"/>
             </form>
         </div> 
@@ -65,11 +65,16 @@ function createLenses(lenses) {
 
 // Button + - //
 
-let res = document.getElementById('result');
-let plus = document.getElementById('increase');
-let moins = document.getElementById('decrease');
+let btnAdd = document.querySelector('#increase');
+let btnSubstract = document.querySelector('#decrease');
+let val = document.querySelector('#result');
 
+btnAdd.addEventListener("click", () => {
+    val.value = parseInt(val.value) + 1;
+})
 
-
+btnSubstract.addEventListener("click", () => {
+    val.value = parseInt(val.value) - 1;
+})
 
 
