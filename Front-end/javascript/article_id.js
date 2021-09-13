@@ -41,9 +41,9 @@ function hyrdrateArticle(article) {
         <div class="quant_nmb">
             <p class="quant">Quantitée :</p>
             <form class="btn_i_d">
-                <input id="decrease" type="button" value="-"/>
+                <input id="decrease" type="button" onclick="decreaseValue()" value="-"/>
                 <input id="result" type="text" value="1"/>
-                <input id="increase" type="button" value="+"/>
+                <input id="increase" type="button" onclick="increaseValue()" value="+"/>
             </form>
         </div> 
         <p class="price_product">Prix : ${article.price / 100}€</p>   
@@ -65,16 +65,21 @@ function createLenses(lenses) {
 
 // Button + - //
 
-let btnAdd = document.querySelector('#increase');
-let btnSubstract = document.querySelector('#decrease');
-let val = document.querySelector('#result');
+function increaseValue() {
+    var value = parseInt(document.getElementById('result').value);
+    value++;
+    if(value >= 20){
+        value = 20
+    }
+    document.getElementById('result').value = value;
+  }
 
-btnAdd.addEventListener("click", () => {
-    val.value = parseInt(val.value) + 1;
-})
-
-btnSubstract.addEventListener("click", () => {
-    val.value = parseInt(val.value) - 1;
-})
-
+  function decreaseValue() {
+    var value = parseInt(document.getElementById('result').value);
+    value--;
+    if(value < 1){
+        value = 1
+    }
+    document.getElementById('result').value = value;
+  }
 
