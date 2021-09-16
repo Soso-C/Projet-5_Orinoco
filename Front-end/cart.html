@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Orinoco développe des appareils photo et des équipements photographiques haut de gamme, pour vous plonger dans la création d'images étonnantes.">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="https://kit.fontawesome.com/0c6d24d19c.js" crossorigin="anonymous"></script>   
+    <script src="https://kit.fontawesome.com/0c6d24d19c.js" crossorigin="anonymous"></script> 
+    <script src="javascript/cart.js" defer></script>  
     <title>Orinoco, Mon Panier</title>
 </head>
 <body>
@@ -18,8 +19,39 @@
         </div>
     </header>
     <!-- Fin header -->
-    <main>
-
+    <main class="main_cart">
+        <div class="bloc_cart">
+            <p class="cart_title">Mon panier</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Quantitée</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h2>Zurss 50S</h2>
+                            <img class="elt_cart_img" src="img/vcam_1.jpg" alt="">
+                        </td>
+                        <td>2500€</td>
+                        <td>
+                            <form class="btn_i_d">
+                                <input id="decrease" type="button" onclick="decreaseValue()" value="-"/>
+                                <input id="result" type="text" value="1"/>
+                                <input id="increase" type="button" onclick="increaseValue()" value="+"/>
+                            </form>
+                        </td>
+                        <td class="cart_total">2500€</td>
+                        <td>X</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
     <!-- Footer  -->
     <footer>

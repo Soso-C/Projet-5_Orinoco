@@ -66,7 +66,7 @@ function createLenses(lenses) {
 // Button + - //
 
 function increaseValue() {
-    var value = parseInt(document.getElementById('result').value);
+    let value = parseInt(document.getElementById('result').value);
     value++;
     if(value >= 20){
         value = 20
@@ -75,7 +75,7 @@ function increaseValue() {
   }
 
   function decreaseValue() {
-    var value = parseInt(document.getElementById('result').value);
+    let value = parseInt(document.getElementById('result').value);
     value--;
     if(value < 1){
         value = 1

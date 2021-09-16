@@ -356,3 +356,49 @@ select {
     text-align: center;
     font-weight: 700;
 }
+
+
+/************************************************************  3RD Page : CART ****************************************************************************/
+
+.main_cart {
+    height: 100vh;
+    display: flex;
+}
+
+.bloc_cart {
+    background: white;
+    width: 90%;
+    height: 90%;
+    margin: auto auto;
+    border-radius: 0.5em;
+}
+
+.cart_title {
+    text-align: center;
+    font-size: 1.3em;
+    border-bottom: 1px solid;
+    padding-bottom: 1em;
+    width: 95%;
+    margin: 1em auto;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    padding-top: 1em;
+}
+
+thead th {
+    vertical-align: bottom;
+}
+
+/* td {
+    border: 1px solid #dee2e6;
+} */
+
+.elt_cart_img {
+    width: 200px;
+}
+
+
