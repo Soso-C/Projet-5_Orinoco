@@ -302,9 +302,6 @@ select {
 
 .quant, .lent {
     padding-left: 2em;
-}
-
-.quant, .lent {
     font-weight: bold;
 }
 
@@ -366,20 +363,19 @@ select {
 }
 
 .bloc_cart {
-    background: white;
-    width: 90%;
-    height: 90%;
+    background: whitesmoke;
+    width: 100%;
+    height: 100%;
     margin: auto auto;
-    border-radius: 0.5em;
 }
 
 .cart_title {
     text-align: center;
     font-size: 1.3em;
-    border-bottom: 1px solid;
-    padding-bottom: 1em;
-    width: 95%;
-    margin: 1em auto;
+    background: gray;
+    padding: 1em;
+    margin: 0;
+    font-weight: 600;
 }
 
 table {
@@ -399,6 +395,21 @@ thead th {
 
 .elt_cart_img {
     width: 200px;
+    border-radius: 5px;
 }
 
+.form_elt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.form_elt label {
+    padding: 1em;
+    font-weight: 600;
+}
+
+.form_elt input{
+    /* width: 50%; */
+    padding-bottom: 1em;
+}
