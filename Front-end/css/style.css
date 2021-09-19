@@ -314,7 +314,7 @@ select {
     background: white;
 }
 
-.btn_test2 {
+#btn_test2 {
     border-color: transparent;
     border-radius: 30px;
     background-color: yellow;
@@ -323,7 +323,7 @@ select {
     width: 200px;
     font-weight: 500;
 }
-.btn_test2:hover{
+#btn_test2:hover{
     cursor: pointer;
     opacity: 0.8;
 }

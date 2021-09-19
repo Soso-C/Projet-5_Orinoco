@@ -41,15 +41,15 @@ function hyrdrateArticle(article) {
         <div class="quant_nmb">
             <p class="quant">Quantitée :</p>
             <form class="btn_i_d">
-                <input id="decrease" type="button" value="-"/>
+                <input id="decrease" type="button" onclick="decreaseValue()" value="-"/>
                 <input id="result" type="text" value="1"/>
-                <input id="increase" type="button" value="+"/>
+                <input id="increase" type="button" onclick="increaseValue()" value="+"/>
             </form>
         </div> 
-        <p class="price_product">Prix : ${article.price / 100}€</p>   
+        <p class="price_product">${article.price / 100}€</p>   
     </div> 
     <div class="btn_price">
-        <a href="#"><button type="submit" class="btn_test2">Ajouter au panier</button></a>
+        <a href="#"><button type="submit" id="btn_test2" onclick="addToCart()" >Ajouter au panier</button></a>
     </div>`     
 }
 
@@ -66,43 +66,52 @@ function createLenses(lenses) {
 
 // Button + - //
 
-let btnIncr = document.getElementById('increase');
-let btnDecr = document.getElementById('decrease');
-let btnResult = document.getElementById('result').value;
+                                                      // let btnIncr = document.getElementById('increase');
+                                                      // let btnDecr = document.getElementById('decrease');
+                                                      // let btnResult = document.getElementById('result').value;
 
 
-btnIncr.addEventListener("click", () => {
-  btnResult++;
-  if(btnResult >= 20){
-    btnResult = 20;
+                                                      // btnIncr.addEventListener("click", () => {
+                                                      //   btnResult++;
+                                                      //   if(btnResult >= 20){
+                                                      //     btnResult = 20;
+                                                      //   }
+                                                      //   document.getElementById('result').value = btnResult;
+                                                      // });
+
+                                                      // btnDecr.addEventListener("click", () => {
+                                                      //   btnResult--;
+                                                      //   if(btnResult < 1){
+                                                      //     btnResult = 1;
+                                                      //   }
+                                                      //   document.getElementById('result').value = btnResult;
+                                                      // });
+
+function increaseValue() {
+    let value = parseInt(document.getElementById('result').value);
+    value++;
+    if(value >= 20){
+        value = 20
+    }
+    document.getElementById('result').value = value;
   }
-  document.getElementById('result').value = btnResult;
-});
 
-btnDecr.addEventListener("click", () => {
-  btnResult--;
-  if(btnResult < 1){
-    btnResult = 1;
+  function decreaseValue() {
+    let value = parseInt(document.getElementById('result').value);
+    value--;
+    if(value < 1){
+        value = 1
+    }
+    document.getElementById('result').value = value;
   }
-  document.getElementById('result').value = btnResult;
-});
+
+/****************************************** Local Storage ********************************************/
+
+function addToCart() {
+  localStorage.setItem("title", document.querySelector('p.name_article').textContent);
+  localStorage.setItem("price", document.querySelector('p.price_product').textContent);
+  localStorage.setItem("quantity", document.getElementById('result').value);
+}
 
 
-// function increaseValue() {
-//     let value = parseInt(document.getElementById('result').value);
-//     value++;
-//     if(value >= 20){
-//         value = 20
-//     }
-//     document.getElementById('result').value = value;
-//   }
-
-//   function decreaseValue() {
-//     let value = parseInt(document.getElementById('result').value);
-//     value--;
-//     if(value < 1){
-//         value = 1
-//     }
-//     document.getElementById('result').value = value;
-//   }
 
