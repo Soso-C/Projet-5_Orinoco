@@ -4,10 +4,13 @@
     hyrdrateArticle(article)   
 })()
 
+
+// Retourne l'url de notre élement avec son id.
 function getArticleId(){
     return new URL(location.href).searchParams.get("id")
 }
 
+// Appel a l'api pour nous retourner les données de l'id en question.
 function getArticle(articleId){
     return fetch(`http://localhost:3000/api/cameras/${articleId}`)
   .then(function(response) {
@@ -19,7 +22,7 @@ function getArticle(articleId){
   })
 }
 
-
+// Créer l'article 
 function hyrdrateArticle(article) {
 
     const lens = createLenses(article.lenses);
@@ -114,6 +117,7 @@ function addToCart() {
     localStorage.setItem("price", document.querySelector('p.price_product').textContent);
     localStorage.setItem("quantity", document.getElementById('result').value);
     localStorage.setItem("lense", document.querySelector('#lent_prod').value);
+    localStorage.setItem("imgU", document.querySelector('.img_product').src);
   }
   
 };
