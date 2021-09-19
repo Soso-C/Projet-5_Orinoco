@@ -19,7 +19,7 @@ function getArticle(articleId){
   })
 }
 
- 
+
 function hyrdrateArticle(article) {
 
     const lens = createLenses(article.lenses);
@@ -33,7 +33,7 @@ function hyrdrateArticle(article) {
     </div>  
     <div class="quant_nmb">
     <p class="lent" >Lentilles :</p>
-    <select name="p_quant">
+    <select id="lent_prod" name="p_quant">
         ${lens}
     <select>
     </div>
@@ -51,7 +51,7 @@ function hyrdrateArticle(article) {
     <div class="btn_price">
         <a href="#"><button type="submit" id="btn_test2" onclick="addToCart()" >Ajouter au panier</button></a>
     </div>`     
-}
+};
 
 // Fonction qui retourne ma liste de lenses.
 
@@ -61,7 +61,7 @@ function createLenses(lenses) {
        option += `<option class="opt_lens"> ${elt}`
     }
     return option
-}
+};
 
 
 // Button + - //
@@ -94,7 +94,7 @@ function increaseValue() {
         value = 20
     }
     document.getElementById('result').value = value;
-  }
+  };
 
   function decreaseValue() {
     let value = parseInt(document.getElementById('result').value);
@@ -103,15 +103,19 @@ function increaseValue() {
         value = 1
     }
     document.getElementById('result').value = value;
-  }
+  };
 
 /****************************************** Local Storage ********************************************/
 
 function addToCart() {
-  localStorage.setItem("title", document.querySelector('p.name_article').textContent);
-  localStorage.setItem("price", document.querySelector('p.price_product').textContent);
-  localStorage.setItem("quantity", document.getElementById('result').value);
-}
 
+  if(document.getElementById('result').value >= 1){
+    localStorage.setItem("title", document.querySelector('p.name_article').textContent);
+    localStorage.setItem("price", document.querySelector('p.price_product').textContent);
+    localStorage.setItem("quantity", document.getElementById('result').value);
+    localStorage.setItem("lense", document.querySelector('#lent_prod').value);
+  }
+  
+};
 
 

@@ -21,62 +21,37 @@
     <!-- Fin header -->
     <main class="main_cart">
         <div class="bloc_cart">
-            <p class="cart_title">Mon panier</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produit</th>
-                        <th>Prix</th>
-                        <th>Quantitée</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <h4>Zurss 50S</h4>
-                            <!-- <img class="elt_cart_img" src="img/vcam_1.jpg" alt=""> -->
-                        </td>
-                        <td>2500€</td>
-                        <td>
-                            <form class="btn_i_d">
-                                <input id="decrease" type="button" value="-"/>
-                                <input id="result" type="text" value="1"/>
-                                <input id="increase" type="button" value="+"/>
-                            </form>
-                        </td>
-                        <td class="cart_total">2500€</td>
-                        <td>X</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="cart_title">Formulaire</p>
-            <form action="" method="post">
-                <div class="form_elt">
-                    <label for="lname">Nom</label>
-                    <input type="text" id="lname" name="lname" placeholder="Entrez votre nom">
+            <h2>Mon panier</h2>
+            <div class="cart_elt_cont">
+                <div class="cart_img_title">
+                    <img class="img_cart_art" src="/Front-end/img/vcam_1.jpg" alt="">
                 </div>
-                <div class="form_elt">
-                    <label for="fname">Prénom</label>
-                    <input type="text" id="fname" name="fname" placeholder="Entrez votre prénom"/>
                 <div>
-                <div class="form_elt">
-                    <label for="adress">Adresse</label>
-                    <input type="text" id="adress" name="user_adress" placeholder="Entrez votre adresse" />
-                <div>    
-                <div class="form_elt">
-                    <label for="mail">Email</label>
-                    <input type="email" id="mail" name="user_mail" placeholder="Entrez votre email">
+                    <p>Name</p>
+                    <h6>Test50</h6>
                 </div>
-                <div class="form_elt">
-                    <label for="tel">Telephone</label>
-                    <input type="tel" id="tel" name="user_tel" placeholder="Entrez votre numéro"/>
                 <div>
-                <div class="btn_valider">
-                    <input type="submit" value="Valider"/>
+                    <p>Quantité</p>
+                    <h6>1</h6>
+                </div>
                 <div>
-            </form>
+                    <p>Lentilles</p>
+                    <h6>Test</h6>
+                </div>
+                <div>
+                    <p>Prix</p>
+                    <h6>500€</h6>
+                </div>
+                <div>
+                    <p>Total</p>
+                    <h6>500€</h6>
+                </div>
+                <div class="cart_item_clear"><i class="fas fa-trash-alt"></i></div>
+           </div>
+           <div class="cart_total">
+               <p>Prix Total :</p>
+               <p class="p_total">500 €</p>
+           </div>
         </div>
     </main>
     <!-- Footer  -->

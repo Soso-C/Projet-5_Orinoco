@@ -1,22 +1,20 @@
 // Button + - Cart
 
-let btnIncr = document.getElementById('increase');
-let btnDecr = document.getElementById('decrease');
-let btnResult = document.getElementById('result').value;
-
-
-btnIncr.addEventListener("click", () => {
-  btnResult++;
-  if(btnResult >= 20){
-    btnResult = 20;
+function increaseValue() {
+  let value = parseInt(document.getElementById('result').value);
+  value++;
+  if(value >= 20){
+      value = 20
   }
-  document.getElementById('result').value = btnResult;
-});
+  document.getElementById('result').value = value;
+};
 
-btnDecr.addEventListener("click", () => {
-  btnResult--;
-  if(btnResult < 1){
-    btnResult = 1;
+function decreaseValue() {
+  let value = parseInt(document.getElementById('result').value);
+  value--;
+  if(value < 1){
+      value = 1
   }
-  document.getElementById('result').value = btnResult;
-});
+  document.getElementById('result').value = value;
+};
+
