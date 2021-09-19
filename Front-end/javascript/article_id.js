@@ -1,4 +1,3 @@
-
 (async function(){
     const articleId = getArticleId()
     const article = await getArticle(articleId)
@@ -20,6 +19,7 @@ function getArticle(articleId){
   })
 }
 
+ 
 function hyrdrateArticle(article) {
 
     const lens = createLenses(article.lenses);
@@ -41,9 +41,9 @@ function hyrdrateArticle(article) {
         <div class="quant_nmb">
             <p class="quant">Quantitée :</p>
             <form class="btn_i_d">
-                <input id="decrease" type="button" onclick="decreaseValue()" value="-"/>
+                <input id="decrease" type="button" value="-"/>
                 <input id="result" type="text" value="1"/>
-                <input id="increase" type="button" onclick="increaseValue()" value="+"/>
+                <input id="increase" type="button" value="+"/>
             </form>
         </div> 
         <p class="price_product">Prix : ${article.price / 100}€</p>   
@@ -63,23 +63,46 @@ function createLenses(lenses) {
     return option
 }
 
+
 // Button + - //
 
-function increaseValue() {
-    let value = parseInt(document.getElementById('result').value);
-    value++;
-    if(value >= 20){
-        value = 20
-    }
-    document.getElementById('result').value = value;
-  }
+let btnIncr = document.getElementById('increase');
+let btnDecr = document.getElementById('decrease');
+let btnResult = document.getElementById('result').value;
 
-  function decreaseValue() {
-    let value = parseInt(document.getElementById('result').value);
-    value--;
-    if(value < 1){
-        value = 1
-    }
-    document.getElementById('result').value = value;
+
+btnIncr.addEventListener("click", () => {
+  btnResult++;
+  if(btnResult >= 20){
+    btnResult = 20;
   }
+  document.getElementById('result').value = btnResult;
+});
+
+btnDecr.addEventListener("click", () => {
+  btnResult--;
+  if(btnResult < 1){
+    btnResult = 1;
+  }
+  document.getElementById('result').value = btnResult;
+});
+
+
+// function increaseValue() {
+//     let value = parseInt(document.getElementById('result').value);
+//     value++;
+//     if(value >= 20){
+//         value = 20
+//     }
+//     document.getElementById('result').value = value;
+//   }
+
+//   function decreaseValue() {
+//     let value = parseInt(document.getElementById('result').value);
+//     value--;
+//     if(value < 1){
+//         value = 1
+//     }
+//     document.getElementById('result').value = value;
+//   }
 

@@ -41,9 +41,9 @@
                         <td>2500€</td>
                         <td>
                             <form class="btn_i_d">
-                                <input id="decrease" type="button" onclick="decreaseValue()" value="-"/>
+                                <input id="decrease" type="button" value="-"/>
                                 <input id="result" type="text" value="1"/>
-                                <input id="increase" type="button" onclick="increaseValue()" value="+"/>
+                                <input id="increase" type="button" value="+"/>
                             </form>
                         </td>
                         <td class="cart_total">2500€</td>
@@ -54,24 +54,27 @@
             <p class="cart_title">Formulaire</p>
             <form action="" method="post">
                 <div class="form_elt">
-                    <label for="name">Nom</label>
-                    <input type="text" id="lname" name="lname">
+                    <label for="lname">Nom</label>
+                    <input type="text" id="lname" name="lname" placeholder="Entrez votre nom">
                 </div>
                 <div class="form_elt">
-                    <label for="name">Prénom</label>
-                    <input type="text" id="fname" name="fname"/>
+                    <label for="fname">Prénom</label>
+                    <input type="text" id="fname" name="fname" placeholder="Entrez votre prénom"/>
                 <div>
                 <div class="form_elt">
-                    <label for="name">Adresse</label>
-                    <input type="text" id="adress" name="user_adress" />
+                    <label for="adress">Adresse</label>
+                    <input type="text" id="adress" name="user_adress" placeholder="Entrez votre adresse" />
                 <div>    
                 <div class="form_elt">
                     <label for="mail">Email</label>
-                    <input type="email" id="mail" name="user_mail">
+                    <input type="email" id="mail" name="user_mail" placeholder="Entrez votre email">
                 </div>
                 <div class="form_elt">
-                    <label for="name">Telephone</label>
-                    <input type="tel" id="tel" name="user_tel" />
+                    <label for="tel">Telephone</label>
+                    <input type="tel" id="tel" name="user_tel" placeholder="Entrez votre numéro"/>
+                <div>
+                <div class="btn_valider">
+                    <input type="submit" value="Valider"/>
                 <div>
             </form>
         </div>
