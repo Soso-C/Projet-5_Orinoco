@@ -430,6 +430,7 @@ h6 {
 #cart_title_none {
     color: white;
     text-align: center;
+    height: 100vh;
 }
 
 #form_h2 {
@@ -443,14 +444,14 @@ h6 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2em;
 }
 
 .form_group {
-    width: 50%;
+    width: 40%;
     padding: 1em;
-    display: grid;
+    display: flex;
     text-align: center;
+    flex-direction: column;
 }
 
 .form_group label {
@@ -461,8 +462,9 @@ h6 {
 .form_group input {
     padding: 1em;
     border-radius: 20px;
+    text-align: center;
 }
 
 .btn_valider {
-    margin: 1em;
+    margin: 2em;
 }
