@@ -93,9 +93,6 @@ function createLenses(lenses) {
 function increaseValue() {
     let value = parseInt(document.getElementById('result').value);
     value++;
-    if(value >= 20){
-        value = 20
-    }
     document.getElementById('result').value = value;
   };
 
@@ -118,6 +115,7 @@ function addToCart() {
     localStorage.setItem("quantity", document.getElementById('result').value);
     localStorage.setItem("lense", document.querySelector('#lent_prod').value);
     localStorage.setItem("imgU", document.querySelector('.img_product').src);
+    window.location.href="cart.html";
   }
   
 };

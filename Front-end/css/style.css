@@ -426,3 +426,8 @@ h6 {
     padding-right: 2em ;
     font-weight: 500;
 }
+
+#cart_title_none {
+    color: white;
+    text-align: center;
+}
