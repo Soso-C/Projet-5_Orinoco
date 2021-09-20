@@ -358,7 +358,7 @@ select {
 /************************************************************  3RD Page : CART ****************************************************************************/
 
 .main_cart {
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
 }
 
@@ -370,7 +370,7 @@ select {
     color: white;
     text-align: center;
     margin: 0 auto;
-    background: whitesmoke;
+    background: grey;
     padding: 1em;
 }
 
@@ -407,7 +407,7 @@ select {
 }
 
 h6 {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 500;
 }
 
@@ -430,4 +430,39 @@ h6 {
 #cart_title_none {
     color: white;
     text-align: center;
+}
+
+#form_h2 {
+    margin: 1em 0;
+    margin-top: 2em;
+}
+
+.form_container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.form_group {
+    width: 50%;
+    padding: 1em;
+    display: grid;
+    text-align: center;
+}
+
+.form_group label {
+    font-size: 1.3em;
+    padding: 0.5em;
+}
+
+.form_group input {
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.btn_valider {
+    margin: 1em;
 }
