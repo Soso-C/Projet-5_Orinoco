@@ -76,31 +76,48 @@ if (localStorage.length > 0) {
 // Créé le formulaire 
 function makeForms() {
   document.querySelector(".bloc_cart").innerHTML += `<h2 id="form_h2">Formulaire</h2>
-  <div class="form_container">
+  <form class="form_container">
        <div class="form_group">
            <label for="lname">Nom</label>
-           <input type="text" id="lname" name="lname" placeholder="Entrez votre nom">
+           <input type="text" id="lname" name="lname" placeholder="Entrez votre nom" required>
        </div>
        <div class="form_group">
            <label for="fname">Prénom</label>
-           <input type="text" id="fname" name="fname" placeholder="Entrez votre prénom"/>
+           <input type="text" id="fname" name="fname" placeholder="Entrez votre prénom" required/>
        </div>
        <div class="form_group">
            <label for="adress">Adresse</label>
-           <input type="text" id="adress" name="user_adress" placeholder="Entrez votre adresse" />
+           <input type="text" id="adress" name="user_adress" placeholder="Entrez votre adresse" required/>
        </div>
        <div class="form_group">
            <label for="mail">Email</label>
-           <input type="email" id="mail" name="user_mail" placeholder="Entrez votre email">
+           <input type="email" id="mail" name="user_mail" placeholder="Entrez votre email" required>
        </div>
        <div class="form_group">
            <label for="tel">Telephone</label>
-           <input type="tel" id="tel" name="user_tel" placeholder="Entrez votre numéro"/>
+           <input type="tel" id="tel" name="user_tel" placeholder="Entrez votre numéro" required/>
        </div>
        <div class="btn_valider">
            <a href="#"><button type="submit" id="btn_test2">Commander</button></a>
        <div>
-   </div>`
+   </form>`
 }
+
+// Récupérer les données de formulaire dans le local storage.
+
+function getInfoForms(){
+
+    localStorage.setItem("user_name", document.getElementById("fname").value);
+    localStorage.setItem("user_prenom", document.getElementById("lname").value);
+    localStorage.setItem("user_adress", document.getElementById("adress").value);
+    localStorage.setItem("user_tel", document.getElementById("tel").value);
+    localStorage.setItem("user_email", document.getElementById("mail").value);
+};
+
+// Event listener sur le bouton pour récupérer les données du forms en utilisant la fonc "getInfoForms()".
+
+document.getElementById("btn_test2").addEventListener("click", () => {
+    getInfoForms();
+});
 
 

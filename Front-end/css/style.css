@@ -460,11 +460,22 @@ h6 {
 }
 
 .form_group input {
-    padding: 1em;
+    padding: 0.7em;
     border-radius: 20px;
     text-align: center;
+    font-size: 1.2em;
+    font-weight: 400;
+    outline: none;
 }
 
 .btn_valider {
     margin: 2em;
+}
+
+.form_group input:valid {
+    background-color: green;
+}
+
+.form_group input:invalid {
+    background-color: red;
 }
