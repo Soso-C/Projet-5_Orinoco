@@ -479,3 +479,21 @@ h6 {
 .form_group input:invalid {
     background-color: red;
 }
+
+/************************************************************** 4TH PAGE VALIDATION **********************************************************************/
+
+
+.valid_main {
+    height: 100vh;
+}
+
+.valid_container {
+    color: white;
+    text-align: center;
+    font-size: 1.4em;
+    padding-top: 3em;
+}
+
+.valid_container p {
+    font-weight: 600;
+}

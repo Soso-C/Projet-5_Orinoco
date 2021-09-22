@@ -112,12 +112,13 @@ function getInfoForms(){
     localStorage.setItem("user_adress", document.getElementById("adress").value);
     localStorage.setItem("user_tel", document.getElementById("tel").value);
     localStorage.setItem("user_email", document.getElementById("mail").value);
+    localStorage.setItem("user_total_price", document.querySelector(".p_total").textContent);
 };
 
-// Event listener sur le bouton pour récupérer les données du forms en utilisant la fonc "getInfoForms()".
-
+// Event listener sur le Form pour récupérer les données de l'user lorsqu'il est submit avec la func "getInfoForms()".
 document.querySelector(".form_container").addEventListener("submit", () => {
     getInfoForms();
+    window.location.href="validation.html"
 });
 
 

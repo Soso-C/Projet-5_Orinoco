@@ -2,6 +2,7 @@ let url = "http://localhost:3000/api/cameras"
 
 main()
 
+// Func qui appelle toutes les fonctions
 async function main() {
   const articles = await getArticles()
 
@@ -11,7 +12,7 @@ async function main() {
 }
 
 
-
+// Récupere les données de l'api
 function getArticles() {
   return fetch(url)
   .then(function(response) {
@@ -23,6 +24,7 @@ function getArticles() {
   })
 }
 
+// Func qui créé nos articles
 function displayArticle(article){
   document.getElementById('produc_list').innerHTML += `
     <div href="#" class="container_elt">
