@@ -95,7 +95,7 @@ function makeForms() {
        </div>
        <div class="form_group">
            <label for="tel">Telephone</label>
-           <input type="tel" id="tel" name="user_tel" placeholder="Entrez votre numéro" required/>
+           <input type="tel" id="tel" name="user_tel" placeholder="06 06 06 06 07" pattern="[0-9]{10}" required/>
        </div>
        <div class="btn_valider">
            <a href="#"><button type="submit" id="btn_test2">Commander</button></a>
@@ -116,7 +116,7 @@ function getInfoForms(){
 
 // Event listener sur le bouton pour récupérer les données du forms en utilisant la fonc "getInfoForms()".
 
-document.getElementById("btn_test2").addEventListener("click", () => {
+document.querySelector(".form_container").addEventListener("submit", () => {
     getInfoForms();
 });
 
