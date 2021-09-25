@@ -76,7 +76,7 @@ if (localStorage.length > 0) {
 // Créé le formulaire 
 function makeForms() {
   document.querySelector(".bloc_cart").innerHTML += `<h2 id="form_h2">Formulaire</h2>
-  <form class="form_container">
+  <form class="form_container" action="validation.html">
        <div class="form_group">
            <label for="lname">Nom</label>
            <input type="text" id="lname" name="lname" placeholder="Entrez votre nom" required>
@@ -118,7 +118,7 @@ function getInfoForms(){
 // Event listener sur le Form pour récupérer les données de l'user lorsqu'il est submit avec la func "getInfoForms()".
 document.querySelector(".form_container").addEventListener("submit", () => {
     getInfoForms();
-    window.location.href="validation.html"
+    window.location.href="validation.html";
 });
 
 
