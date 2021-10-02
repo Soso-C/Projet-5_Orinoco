@@ -472,13 +472,6 @@ h6 {
     margin: 2em;
 }
 
-.form_group input:valid {
-    background-color: green;
-}
-
-.form_group input:invalid {
-    background-color: red;
-}
 
 /************************************************************** 4TH PAGE VALIDATION **********************************************************************/
 

@@ -1,3 +1,4 @@
+// S'appel tout seul pour appeler nos 3 fonctions en attendant le résultat async await pour l'attente du retour de notre api.
 (async function(){
     const articleId = getArticleId()
     const article = await getArticle(articleId)
@@ -66,29 +67,7 @@ function createLenses(lenses) {
     return option
 };
 
-
-// Button + - //
-
-                                                      // let btnIncr = document.getElementById('increase');
-                                                      // let btnDecr = document.getElementById('decrease');
-                                                      // let btnResult = document.getElementById('result').value;
-
-
-                                                      // btnIncr.addEventListener("click", () => {
-                                                      //   btnResult++;
-                                                      //   if(btnResult >= 20){
-                                                      //     btnResult = 20;
-                                                      //   }
-                                                      //   document.getElementById('result').value = btnResult;
-                                                      // });
-
-                                                      // btnDecr.addEventListener("click", () => {
-                                                      //   btnResult--;
-                                                      //   if(btnResult < 1){
-                                                      //     btnResult = 1;
-                                                      //   }
-                                                      //   document.getElementById('result').value = btnResult;
-                                                      // });
+// Button + - 
 
 function increaseValue() {
     let value = parseInt(document.getElementById('result').value);
@@ -108,16 +87,30 @@ function increaseValue() {
 /****************************************** Local Storage ********************************************/
 
 function addToCart() {
-
-  if(document.getElementById('result').value >= 1){
-    localStorage.setItem("title", document.querySelector('p.name_article').textContent);
-    localStorage.setItem("price", document.querySelector('p.price_product').textContent);
-    localStorage.setItem("quantity", document.getElementById('result').value);
-    localStorage.setItem("lense", document.querySelector('#lent_prod').value);
-    localStorage.setItem("imgU", document.querySelector('.img_product').src);
-    window.location.href="cart.html";
-  }
   
+  // Objet js qui récupere nos données du produit.
+  let camProduct = {
+    name: document.querySelector('p.name_article').textContent,
+    price: document.querySelector('p.price_product').textContent,
+    quantity: document.getElementById('result').value,
+    lense: document.querySelector('#lent_prod').value,
+    imgUrl:document.querySelector('.img_product').src,
+    id: getArticleId(),
+  };
+  
+  let productInLocalStorage = JSON.parse(localStorage.getItem("product"));
+
+  // si il y a deja des produits dans mon local storage
+  if(productInLocalStorage){
+    productInLocalStorage.push(camProduct);
+    localStorage.setItem("product", JSON.stringify(productInLocalStorage));
+  }
+  // Si il y a pas de produit dans le local storage
+  else{
+    productInLocalStorage = [];
+    productInLocalStorage.push(camProduct);
+    localStorage.setItem("product", JSON.stringify(productInLocalStorage));
+  }
 };
 
 

@@ -1,4 +1,5 @@
 // Button + - Cart
+let total = 0;
 
 function increaseValue() {
   let value = parseInt(document.getElementById('result').value);
@@ -19,41 +20,51 @@ function decreaseValue() {
 };
 
 // Créée notre item dans cart.
-function makeCart(){
 
-  document.querySelector(".bloc_cart").innerHTML +=
-   `<h2>Mon panier</h2>
-    <div class="cart_elt_cont">
-        <div class="cart_img_title">
-            <img class="img_cart_art" src="${localStorage.getItem("imgU")}" alt="">
-        </div>
-        <div>
-            <p>Nom</p>
-            <h6>${localStorage.getItem("title")}</h6>
-        </div>
-        <div>
-            <p>Quantitée</p>
-            <h6>${localStorage.getItem("quantity")}</h6>
-        </div>
-        <div>
-            <p>Lentille</p>
-            <h6>${localStorage.getItem("lense")}</h6>
-        </div>
-        <div>
-            <p>Prix</p>
-            <h6>${localStorage.getItem("price")}</h6>
-        </div>
-        <div>
-            <p>Total</p>
-            <h6>${parseInt(localStorage.getItem("price")) * parseInt(localStorage.getItem("quantity"))} €</h6>
-        </div>
-        <div class="cart_item_clear" onclick="clearCart()"><i class="fas fa-trash-alt"></i></div>
-  </div>
-  <div class="cart_total">
+function makeCart(){
+    let test = JSON.parse(localStorage.getItem("product"));
+
+    document.querySelector(".bloc_cart").innerHTML += `<h2>Mon panier</h2>`;
+
+    for (produit in test) {
+        
+        document.querySelector(".bloc_cart").innerHTML +=
+        `
+        <div class="cart_elt_cont">
+            <div class="cart_img_title">
+                <img class="img_cart_art" src=${test[produit].imgUrl} alt="Photo camera">
+            </div>
+            <div>
+                <p>Nom</p>
+                <h6>${test[produit].name}</h6>
+            </div>
+            <div>
+                <p>Quantitée</p>
+                <h6>${test[produit].quantity}</h6>
+            </div>
+            <div>
+                <p>Lentille</p>
+                <h6>${test[produit].lense}</h6>
+            </div>
+            <div>
+                <p>Prix</p>
+                <h6>${test[produit].price}</h6>
+            </div>
+            <div>
+                <p>Total</p>
+                <h6>${parseInt(test[produit].price) * parseInt(test[produit].quantity)} €</h6>
+            </div>
+            <div class="cart_item_clear" onclick="clearCart()"><i class="fas fa-trash-alt"></i></div>
+                
+            </div>
+        </div>`
+    };
+    document.querySelector(".bloc_cart").innerHTML += `
+    <div class="cart_total">
       <p>Prix Total :</p>
-      <p class="p_total">${parseInt(localStorage.getItem("price")) * parseInt(localStorage.getItem("quantity"))} €</p>
-  </div>
-  </div>`
+      <p class="p_total">${parseInt(test.quantity) * parseInt(test.price)} €</p>
+    </div>`;
+    
 }
 
 // Clear notre cart le localstorage et refresh la page.
@@ -66,17 +77,19 @@ function clearCart() {
 
 // Affiche notre cart et le form si le localstorage a du contenu sinon affiche :  'Panier vide'
 if (localStorage.length > 0) {
-  makeCart();
-  makeForms();
+    makeCart();
+    makeForms();
 }else{
-  document.querySelector(".bloc_cart").innerHTML +=
+  document.querySelector(".bloc_cart").innerHTML =  
    `<h1 id="cart_title_none">Votre panier ne contient aucun article</h1>`
-}
-  
+};
+
+
 // Créé le formulaire 
 function makeForms() {
-  document.querySelector(".bloc_cart").innerHTML += `<h2 id="form_h2">Formulaire</h2>
-  <form class="form_container" action="validation.html">
+
+    document.querySelector(".bloc_cart").innerHTML += `<h2 id="form_h2">Formulaire</h2>
+    <form class="form_container" action="validation.html">
        <div class="form_group">
            <label for="lname">Nom</label>
            <input type="text" id="lname" name="lname" placeholder="Entrez votre nom" required>
@@ -101,6 +114,12 @@ function makeForms() {
            <a href="#"><button type="submit" id="btn_test2">Commander</button></a>
        <div>
    </form>`
+
+   // Event listener sur le Form pour récupérer les données de l'user lorsqu'il est submit avec la func "getInfoForms()".
+    document.querySelector(".form_container").addEventListener("submit", () => {
+        getInfoForms();
+        window.location.href="validation.html";
+    });
 }
 
 // Récupérer les données de formulaire dans le local storage.
@@ -115,10 +134,6 @@ function getInfoForms(){
     localStorage.setItem("user_total_price", document.querySelector(".p_total").textContent);
 };
 
-// Event listener sur le Form pour récupérer les données de l'user lorsqu'il est submit avec la func "getInfoForms()".
-document.querySelector(".form_container").addEventListener("submit", () => {
-    getInfoForms();
-    window.location.href="validation.html";
-});
+
 
 
