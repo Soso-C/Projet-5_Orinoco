@@ -1,5 +1,17 @@
+// Test total price Panier
+
+let totalPrice = "";
+
+function calculPanier() {
+    let totalPanier = document.querySelectorAll(".total_price_elt");
+    totalPanier.forEach(prod => {
+        totalPrice += prod.textContent;
+        console.log(totalPrice);    
+    });
+}
+
+
 // Button + - Cart
-let total = 0;
 
 function increaseValue() {
   let value = parseInt(document.getElementById('result').value);
@@ -52,7 +64,7 @@ function makeCart(){
             </div>
             <div>
                 <p>Total</p>
-                <h6>${parseInt(test[produit].price) * parseInt(test[produit].quantity)} €</h6>
+                <h6 class="total_price_elt">${parseInt(test[produit].price) * parseInt(test[produit].quantity)} €</h6>
             </div>
             <div class="cart_item_clear" onclick="clearCart()"><i class="fas fa-trash-alt"></i></div>
                 
