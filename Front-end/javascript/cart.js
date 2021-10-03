@@ -1,15 +1,15 @@
 // Test total price Panier
-
 let totalPrice = "";
 
 function calculPanier() {
     let totalPanier = document.querySelectorAll(".total_price_elt");
     totalPanier.forEach(prod => {
-        totalPrice += prod.textContent;
-        console.log(totalPrice);    
-    });
+        totalPrice += prod.textContent.slice(0, -1);
+        console.log(parseInt(totalPrice));  
+    }); 
 }
 
+calculPanier();
 
 // Button + - Cart
 
@@ -74,7 +74,7 @@ function makeCart(){
     document.querySelector(".bloc_cart").innerHTML += `
     <div class="cart_total">
       <p>Prix Total :</p>
-      <p class="p_total">${parseInt(test.quantity) * parseInt(test.price)} €</p>
+      <p class="p_total">${totalPrice} €</p>
     </div>`;
     
 }
@@ -128,15 +128,40 @@ function makeForms() {
    </form>`
 
    // Event listener sur le Form pour récupérer les données de l'user lorsqu'il est submit avec la func "getInfoForms()".
-    document.querySelector(".form_container").addEventListener("submit", () => {
-        getInfoForms();
-        window.location.href="validation.html";
-    });
+    
+   document.querySelector(".form_container").addEventListener("submit", () => {
+    
+    // Ce que je vais envoyer en POST
+
+    const init2 = {
+        method : "POST",
+        headers : {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            firstName: `${localStorage.getItem("user_prenom")}`,
+            lastName: `${localStorage.getItem("user_name")}`,
+            adress: `${localStorage.getItem("user_adress")}`,
+            city: `${localStorage.getItem("user_adress")}`,
+            email: `${localStorage.getItem("user_email")}`
+        }),
+        mode: "cors",
+    };
+
+    console.log(init2);
+
+
+    // Fetch post
+
+    fetch("http://localhost:3000/api/cameras/order", init2)
+    .then(() => console.log("data envoyée"))});   
 }
 
 // Récupérer les données de formulaire dans le local storage.
 
 function getInfoForms(){
+
+    // Stock mes valeurs dans le local Storage
 
     localStorage.setItem("user_name", document.getElementById("fname").value);
     localStorage.setItem("user_prenom", document.getElementById("lname").value);
@@ -144,7 +169,10 @@ function getInfoForms(){
     localStorage.setItem("user_tel", document.getElementById("tel").value);
     localStorage.setItem("user_email", document.getElementById("mail").value);
     localStorage.setItem("user_total_price", document.querySelector(".p_total").textContent);
+  
 };
+
+
 
 
 
