@@ -490,3 +490,83 @@ h6 {
 .valid_container p {
     font-weight: 600;
 }
+
+
+
+
+
+/******************************************************* RESPONSIVE ***************************************************************************************/
+@media screen and (max-width: 1100px) {
+    .container_elt {
+        width: 40%;
+    }
+    .cart_item_clear {
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 680px) {
+
+    .cart_elt_cont {
+        width: 90%;
+        padding: 0.5em;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .cart_img_title {
+        width: 100%;
+    }
+    .img_cart_art {
+        width: 100%;
+    }
+    .top_header{
+        padding: 0.5em;
+    }
+    .top_nav {
+        font-size: 1em;
+    }
+    .form_group {
+        width: 100%;
+    }
+    .cart_item_clear {
+        padding-right: 0;
+        width: 30%;
+    }
+    .container_elt {
+        width: 95%;
+        margin: 2em;
+    }
+    #h2_ancre {
+        padding-top: 1.5em;
+        padding-bottom: 1em;
+        font-size: 1.8em;
+        padding-right: 0.5em;
+        padding-left: 0.5em;
+    }
+    .under_header {
+        background-position: right;
+        padding: 8rem 0rem;
+    }
+    .cart_elt_cont p {
+        padding: 0.8em;
+    }
+    h6 {
+        font-size: 1em;
+        margin: 0.6em;
+    }
+
+    .img_product {
+        height: 220px;
+    }
+
+    .container_product {
+        width: 90%;
+    }
+
+    .cart_text_cont {
+        width: 30%;
+    }
+}
