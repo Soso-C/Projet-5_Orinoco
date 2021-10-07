@@ -135,30 +135,33 @@ function makeForms() {
     
    document.querySelector(".form_container").addEventListener("submit", () => {
     
+    getInfoForms()
+
     // Ce que je vais envoyer en POST
 
-    const init2 = {
-        method : "POST",
-        headers : {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            firstName: `${localStorage.getItem("user_prenom")}`,
-            lastName: `${localStorage.getItem("user_name")}`,
-            adress: `${localStorage.getItem("user_adress")}`,
-            city: `${localStorage.getItem("user_adress")}`,
-            email: `${localStorage.getItem("user_email")}`
-        }),
-        mode: "cors",
-    };
+    // const init2 = {
+    //     method : "POST",
+    //     headers : {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //         firstName: `${localStorage.getItem("user_prenom")}`,
+    //         lastName: `${localStorage.getItem("user_name")}`,
+    //         adress: `${localStorage.getItem("user_adress")}`,
+    //         city: `${localStorage.getItem("user_adress")}`,
+    //         email: `${localStorage.getItem("user_email")}`
+    //     }),
+    //     mode: "cors",
+    // };
 
-    console.log(init2);
+    // console.log(init2);
 
 
     // Fetch post
 
-    fetch("http://localhost:3000/api/cameras/order", init2)
-    .then(() => console.log("data envoyée"))});   
+    // fetch("http://localhost:3000/api/cameras/order", init2)
+    // .then(() => console.log("data envoyée")); 
+    })  
 }
 
 // Récupérer les données de formulaire dans le local storage.
