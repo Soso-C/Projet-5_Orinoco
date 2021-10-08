@@ -133,18 +133,21 @@ function getInfoForms(){
 
     // Stock mes valeurs dans le local Storage
 
-    localStorage.setItem("user_name", document.getElementById("fname").value);
-    localStorage.setItem("user_prenom", document.getElementById("lname").value);
-    localStorage.setItem("user_adress", document.getElementById("adress").value);
-    localStorage.setItem("user_tel", document.getElementById("tel").value);
-    localStorage.setItem("user_email", document.getElementById("mail").value);
+    localStorage.setItem("user_name", lastName);
+    localStorage.setItem("user_prenom", firstName);
+    localStorage.setItem("user_adress", adress);
+    localStorage.setItem("user_tel", phone);
+    localStorage.setItem("user_zipcode", zipCode);
+    localStorage.setItem("user_email", eMail);
     localStorage.setItem("user_total_price", document.querySelector(".p_total").textContent);
   
 };
 
 // Inputs checker 
 
+let firstName, lastName, adress, phone, zipCode, eMail;
 const inputs = document.querySelectorAll('input[type=text],input[type=email],input[type=tel]');
+
 
 // Watch la value de chaque input.
 
@@ -179,44 +182,53 @@ inputs.forEach((input) => {
 const lnameChecker = (value) => {
     if (value.length > 0 && (value.length < 3 || value.length > 25)){
         errorDisplay("lname")
+        lastName = null
     }else if (!value.match(/^[a-zA-Z]*$/)) {
         errorDisplay("lname");
-    }else if (value.length = 0){
-        errorDisplay("lname",neutre)
+        lastName = null
     }
     else{
         errorDisplay("lname", true)
+        lastName = value
     }
     
 }
 
 const fnameChecker = (value) => {
-    if (value.length > 0 && (value.length < 3 || value.length > 25)){
+    if (value.length < 3 || value.length > 25){
         errorDisplay("fname")
+        firstName = null
     }else if (!value.match(/^[a-zA-Z]*$/)) {
         errorDisplay("fname");
+        firstName = null
     }
     else{
         errorDisplay("fname", true)
+        firstName = value
     }
 }
 
 const zipcodeChecker = (value) => {
     if(!value.match(/^[0-9]{5}/)){
         errorDisplay("zip_code")  
+        zipCode = null
     }else{
         errorDisplay("zip_code",true)
+        zipCode = value
     }
 }
 
 const adressChecker = (value) => {
-    if (value.length > 0 && (value.length < 3 || value.length > 25)){
-        errorDisplay("adress")   
+    if (value.length < 8 || value.length > 35){
+        errorDisplay("adress")
+        adress = null   
     }else if (!value.match(/^[a-zA-Z0-9\s]*$/)) {
         errorDisplay("adress");
+        adress = null
     }
     else{
         errorDisplay("adress", true)
+        adress = value
     }
 }
 
@@ -224,17 +236,21 @@ const adressChecker = (value) => {
 const emailChecker = (value) => {
     let emailRegex = new RegExp('^[a-zA-Z0-9.-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
     if(!value.match(emailRegex)){
-        errorDisplay("mail")     
+        errorDisplay("mail")
+        eMail = null     
     }else{
         errorDisplay("mail", true)
+        eMail = value
     }
 }
 
 const telChecker = (value) => {
     if(!value.match(/^[0-9]{10}/)){
         errorDisplay("tel")
+        phone = null
     }else{
         errorDisplay("tel", true)
+        phone = value
     }
 }
 
@@ -248,7 +264,6 @@ function errorDisplay(tag,valid) {
         container.classList.add("errorInput")
     }else {
         container.classList.remove('errorInput')
-        container.classList.add("validInput")
     }
 }
 
