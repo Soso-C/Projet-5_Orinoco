@@ -7,7 +7,10 @@ function makeValidation() {
 
 if (localStorage.length > 0){
     makeValidation()
-}else {
-    window.location.href="test.html"
 }
 
+function redirectionIndex(){
+    window.location.href="index.html"
+}
+
+setTimeout(redirectionIndex, 10000);   

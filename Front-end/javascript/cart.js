@@ -1,16 +1,3 @@
-// Test total price Panier
-let totalPrice = "";
-
-function calculPanier() {
-    let totalPanier = document.querySelectorAll(".total_price_elt");
-    totalPanier.forEach(prod => {
-        totalPrice += prod.textContent.slice(0, -1);
-        console.log(parseInt(totalPrice));  
-    }); 
-}
-
-calculPanier();
-
 // Button + - Cart
 
 function increaseValue() {
@@ -31,7 +18,7 @@ function decreaseValue() {
   document.getElementById('result').value = value;
 };
 
-// Créée notre item dans cart.
+// Créée notre item dans cart depuis nos tableau d'éléments dans le json.
 
 function makeCart(){
     let test = JSON.parse(localStorage.getItem("product"));
@@ -124,7 +111,7 @@ function makeForms() {
        </div>
        <div class="form_group">
            <label for="tel">Telephone</label>
-           <input type="tel" id="tel" name="user_tel" placeholder="Ex: 06 06 06 06 06" pattern="[0-9]{10}" required/>
+           <input type="tel" id="tel" name="user_tel" placeholder="Ex: 06 06 06 06 06" required/>
        </div>
        <div class="btn_valider">
            <a href="#"><button type="submit" id="btn_test2">Commander</button></a>
@@ -137,30 +124,6 @@ function makeForms() {
     
     getInfoForms()
 
-    // Ce que je vais envoyer en POST
-
-    // const init2 = {
-    //     method : "POST",
-    //     headers : {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //         firstName: `${localStorage.getItem("user_prenom")}`,
-    //         lastName: `${localStorage.getItem("user_name")}`,
-    //         adress: `${localStorage.getItem("user_adress")}`,
-    //         city: `${localStorage.getItem("user_adress")}`,
-    //         email: `${localStorage.getItem("user_email")}`
-    //     }),
-    //     mode: "cors",
-    // };
-
-    // console.log(init2);
-
-
-    // Fetch post
-
-    // fetch("http://localhost:3000/api/cameras/order", init2)
-    // .then(() => console.log("data envoyée")); 
     })  
 }
 
@@ -178,6 +141,113 @@ function getInfoForms(){
     localStorage.setItem("user_total_price", document.querySelector(".p_total").textContent);
   
 };
+
+// Inputs checker 
+
+const inputs = document.querySelectorAll('input[type=text],input[type=email],input[type=tel]');
+
+inputs.forEach((input) => {
+    input.addEventListener("input", (e) => {
+        switch (e.target.id){
+            case "fname":
+                fnameChecker(e.target.value);
+                break;
+            case "lname":
+                lnameChecker(e.target.value);
+                break;
+            case "zip_code":
+                zipcodeChecker(e.target.value)
+                break;   
+            case "mail":
+                emailChecker(e.target.value)
+                break;  
+            case "tel":
+                telChecker(e.target.value)
+                break;
+            case "adress":
+                adressChecker(e.target.value)
+                break;
+            default:
+                nul;   
+        }
+    })
+})
+
+
+const lnameChecker = (value) => {
+    let lnameRegex = new RegExp('^[a-zA-Z]', 'g');
+    if(!value.match(lnameRegex)){
+        errorDisplay("lname")
+    }else{
+        errorDisplay("lname", true)
+    }
+    
+}
+
+const fnameChecker = (value) => {
+    let fnameRegex = new RegExp('^[a-zA-Z]', 'g');
+    if(!value.match(fnameRegex)){
+        errorDisplay("fname") 
+    }else{
+        errorDisplay("fname", true)
+    }
+}
+
+const zipcodeChecker = (value) => {
+    if(!value.match(/^[0-9]{5}/)){
+        errorDisplay("zip_code")  
+    }else{
+        errorDisplay("zip_code",true)
+    }
+}
+
+const adressChecker = (value) => {
+    let adressRegex = new RegExp('^[a-zA-Z0-9.-]', 'g');
+    if(!value.match(adressRegex)){
+        errorDisplay("adress")   
+    }else{
+        errorDisplay("adress", true)
+    }
+}
+
+
+const emailChecker = (value) => {
+    let emailRegex = new RegExp('^[a-zA-Z0-9.-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+    if(!value.match(emailRegex)){
+        errorDisplay("mail")     
+    }else{
+        errorDisplay("mail", true)
+    }
+}
+
+const telChecker = (value) => {
+    if(!value.match(/^[0-9]{10}/) || value.length > 10){
+        errorDisplay("tel")
+    }else{
+        errorDisplay("tel", true)
+    }
+}
+
+// Function pour inputChecker qui permet d'afficher a l'user en changeant le bg en vert si valid ou red si false de notre tag. 
+
+function errorDisplay(tag,valid) {
+
+    const container = document.getElementById(tag);
+    
+    if (!valid){
+        container.classList.add("errorInput")
+    }else {
+        container.classList.remove('errorInput')
+        container.classList.add("validInput")
+    }
+}
+
+
+
+
+
+
+
 
 
 
