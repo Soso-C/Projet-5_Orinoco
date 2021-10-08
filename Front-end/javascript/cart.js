@@ -146,6 +146,8 @@ function getInfoForms(){
 
 const inputs = document.querySelectorAll('input[type=text],input[type=email],input[type=tel]');
 
+// Watch la value de chaque input.
+
 inputs.forEach((input) => {
     input.addEventListener("input", (e) => {
         switch (e.target.id){
@@ -168,27 +170,33 @@ inputs.forEach((input) => {
                 adressChecker(e.target.value)
                 break;
             default:
-                nul;   
+                null;   
         }
     })
 })
 
 
 const lnameChecker = (value) => {
-    let lnameRegex = new RegExp('^[a-zA-Z]', 'g');
-    if(!value.match(lnameRegex)){
+    if (value.length > 0 && (value.length < 3 || value.length > 25)){
         errorDisplay("lname")
-    }else{
+    }else if (!value.match(/^[a-zA-Z]*$/)) {
+        errorDisplay("lname");
+    }else if (value.length = 0){
+        errorDisplay("lname",neutre)
+    }
+    else{
         errorDisplay("lname", true)
     }
     
 }
 
 const fnameChecker = (value) => {
-    let fnameRegex = new RegExp('^[a-zA-Z]', 'g');
-    if(!value.match(fnameRegex)){
-        errorDisplay("fname") 
-    }else{
+    if (value.length > 0 && (value.length < 3 || value.length > 25)){
+        errorDisplay("fname")
+    }else if (!value.match(/^[a-zA-Z]*$/)) {
+        errorDisplay("fname");
+    }
+    else{
         errorDisplay("fname", true)
     }
 }
@@ -202,10 +210,12 @@ const zipcodeChecker = (value) => {
 }
 
 const adressChecker = (value) => {
-    let adressRegex = new RegExp('^[a-zA-Z0-9.-]', 'g');
-    if(!value.match(adressRegex)){
+    if (value.length > 0 && (value.length < 3 || value.length > 25)){
         errorDisplay("adress")   
-    }else{
+    }else if (!value.match(/^[a-zA-Z0-9\s]*$/)) {
+        errorDisplay("adress");
+    }
+    else{
         errorDisplay("adress", true)
     }
 }
@@ -221,7 +231,7 @@ const emailChecker = (value) => {
 }
 
 const telChecker = (value) => {
-    if(!value.match(/^[0-9]{10}/) || value.length > 10){
+    if(!value.match(/^[0-9]{10}/)){
         errorDisplay("tel")
     }else{
         errorDisplay("tel", true)
