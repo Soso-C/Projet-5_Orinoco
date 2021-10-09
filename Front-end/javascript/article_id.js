@@ -1,3 +1,5 @@
+/************************************************************** MAIN  ***********************************************************************************/
+
 // S'appel tout seul pour appeler nos 3 fonctions en attendant le résultat async await pour l'attente du retour de notre api.
 (async function(){
     const articleId = getArticleId()
@@ -23,7 +25,7 @@ function getArticle(articleId){
   })
 }
 
-// Créer l'article 
+// Créer l'article avec article en params
 function hyrdrateArticle(article) {
 
     const lens = createLenses(article.lenses);
@@ -67,7 +69,7 @@ function createLenses(lenses) {
     return option
 };
 
-// Button + - 
+/***********************************   Button + -  ***********************************************/
 
 function increaseValue() {
     let value = parseInt(document.getElementById('result').value);
@@ -86,9 +88,10 @@ function increaseValue() {
 
 /****************************************** Local Storage ********************************************/
 
+// Ajoute notre produit dans notre local storage.
 function addToCart() {
   
-  // Objet js qui récupere nos données du produit.
+  // Objet js qui récupere les données du produit lorsqu'on clic sur ajouter au panier.
   let camProduct = {
     name: document.querySelector('p.name_article').textContent,
     price: document.querySelector('p.price_product').textContent,

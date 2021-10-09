@@ -1,25 +1,8 @@
-// Button + - Cart
+/**************************************************************** MAIN **********************************************************************/
 
-function increaseValue() {
-  let value = parseInt(document.getElementById('result').value);
-  value++;
-  if(value >= 20){
-      value = 20;
-  }
-  document.getElementById('result').value = value;
-};
-
-function decreaseValue() {
-  let value = parseInt(document.getElementById('result').value);
-  value--;
-  if(value < 1){
-      value = 1;
-  }
-  document.getElementById('result').value = value;
-};
+/**************************************************************** CART **********************************************************************/
 
 // Créée nos items dans cart depuis notre tableau d'éléments dans le json.
-
 function makeCart(){
     let test = JSON.parse(localStorage.getItem("product"));
     let prixTotal = 0;
@@ -83,6 +66,7 @@ if (localStorage.length > 0) {
    `<h1 id="cart_title_none">Votre panier ne contient aucun article</h1>`
 };
 
+/*********************************************************************************** FORMULAIRE *****************************************************************************/
 
 // Créé le formulaire 
 function makeForms() {
@@ -159,6 +143,8 @@ function getInfoForms(){
   
 };
 
+/*********************************************************************************************** INPUTS **********************************************************************/
+
 // Inputs checker 
 
 let firstName, lastName, adress, phone, zipCode, eMail;
@@ -198,14 +184,14 @@ inputs.forEach((input) => {
 const lnameChecker = (value) => {
     if (value.length < 3 || value.length > 25){
         errorDisplay("lname")
-        lastName = null
+        lastName = null;
     }else if (!value.match(/^[a-zA-Z]*$/)) {
         errorDisplay("lname");
-        lastName = null
+        lastName = null;
     }
     else{
         errorDisplay("lname", true)
-        lastName = value
+        lastName = value;
     }
     
 }
@@ -213,42 +199,42 @@ const lnameChecker = (value) => {
 const fnameChecker = (value) => {
     if (value.length < 3 || value.length > 25){
         errorDisplay("fname")
-        firstName = null
+        firstName = null;
     }else if (!value.match(/^[a-zA-Z]*$/)) {
         errorDisplay("fname");
-        firstName = null
+        firstName = null;
     }
     else{
         errorDisplay("fname", true)
-        firstName = value
+        firstName = value;
     }
 }
 
 const zipcodeChecker = (value) => {
     if (value.length < 5 || value.length > 5){
-        errorDisplay("zip_code")  
-        zipCode = null
+        errorDisplay("zip_code");  
+        zipCode = null;
     }
     else if(!value.match(/^[0-9]{5}/)){
-        errorDisplay("zip_code")  
-        zipCode = null
+        errorDisplay("zip_code");  
+        zipCode = null;
     }else{
-        errorDisplay("zip_code",true)
-        zipCode = value
+        errorDisplay("zip_code",true);
+        zipCode = value;
     }
 }
 
 const adressChecker = (value) => {
     if (value.length < 8 || value.length > 35){
-        errorDisplay("adress")
-        adress = null   
+        errorDisplay("adress");
+        adress = null;  
     }else if (!value.match(/^[a-zA-Z0-9\s]*$/)) {
         errorDisplay("adress");
-        adress = null
+        adress = null;
     }
     else{
         errorDisplay("adress", true)
-        adress = value
+        adress = value;
     }
 }
 
@@ -256,25 +242,25 @@ const adressChecker = (value) => {
 const emailChecker = (value) => {
     let emailRegex = new RegExp('^[a-zA-Z0-9.-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
     if(!value.match(emailRegex)){
-        errorDisplay("mail")
-        eMail = null     
+        errorDisplay("mail");
+        eMail = null;    
     }else{
-        errorDisplay("mail", true)
-        eMail = value
+        errorDisplay("mail", true);
+        eMail = value;
     }
 }
 
 const telChecker = (value) => {
     if (value.length < 10 || value.length > 10){
-        errorDisplay("tel")
-        phone = null
+        errorDisplay("tel");
+        phone = null;
     }
     else if(!value.match(/^[0-9]{10}/)){
-        errorDisplay("tel")
-        phone = null
+        errorDisplay("tel");
+        phone = null;
     }else{
-        errorDisplay("tel", true)
-        phone = value
+        errorDisplay("tel", true);
+        phone = value;
     }
 }
 
@@ -285,13 +271,32 @@ function errorDisplay(tag,valid) {
     const container = document.getElementById(tag);
     
     if (!valid){
-        container.classList.add("errorInput")
+        container.classList.add("errorInput");
     }else {
-        container.classList.remove('errorInput')
+        container.classList.remove('errorInput');
     }
 }
 
 
+/********************************************************************************** Button + - Cart **************************************************************************/
+
+function increaseValue() {
+    let value = parseInt(document.getElementById('result').value);
+    value++;
+    if(value >= 20){
+        value = 20;
+    }
+    document.getElementById('result').value = value;
+  };
+  
+  function decreaseValue() {
+    let value = parseInt(document.getElementById('result').value);
+    value--;
+    if(value < 1){
+        value = 1;
+    }
+    document.getElementById('result').value = value;
+  };
 
 
 
