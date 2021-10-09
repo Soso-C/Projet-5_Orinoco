@@ -3,7 +3,9 @@ function makeValidation() {
     document.querySelector(".valid_container").innerHTML += `<h2>Confirmation de commande</h2>
     <p>Merci ${localStorage.getItem("user_name")} ${localStorage.getItem("user_prenom")} votre commande n°${Math.floor(Math.random() * 70000000000)} à bien été pris en compte par notre équipe !</p>
     <p>Vous serez livré dans les 48h a : ${localStorage.getItem("user_adress") + " " + localStorage.getItem("user_zipcode")}</p>
-    <p>Prix total : ${localStorage.getItem("user_total_price")}</p>`
+    <p>Prix total : ${localStorage.getItem("user_total_price")}</p>
+    <p id="timer"></p>`
+    
     localStorage.clear();
 }
 
@@ -20,4 +22,18 @@ function redirectionIndex(){
 }
 
 // Redirige l'user dans 15s sur l'index apres etre arrivé sur la page validation
-setTimeout(redirectionIndex, 15000);
+setTimeout(redirectionIndex, 16000);
+
+// Timer en seconde pour afficher a l'user avant d'etre rediriger a l'index
+
+const departMinutes = 15;
+let temps = departMinutes;
+
+const timerElement = document.getElementById("timer");
+
+setInterval(() => {
+  let secondes = parseInt(temps % 60, 10);
+  secondes = secondes < 10 ? secondes : secondes;
+  timerElement.innerText = `Redirection a l'accueil dans : ${secondes} secondes`
+  temps = temps <= 0 ? 0 : temps - 1;
+}, 1000)

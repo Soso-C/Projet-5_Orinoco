@@ -60,7 +60,6 @@ function hyrdrateArticle(article) {
 };
 
 // Fonction qui retourne ma liste de lenses.
-
 function createLenses(lenses) {
     option = "";
     for (elt of lenses) {
@@ -69,7 +68,7 @@ function createLenses(lenses) {
     return option
 };
 
-/***********************************   Button + -  ***********************************************/
+/******************************************   Button + -  ***********************************************/
 
 function increaseValue() {
     let value = parseInt(document.getElementById('result').value);

@@ -57,7 +57,7 @@ function clearCart() {
 }
 
 
-// Affiche notre cart et le form si le localstorage a du contenu sinon affiche :  'Panier vide'
+// Affiche notre cart et le form si le localstorage a du contenu sinon affiche :  'Panier vide' dans la page html.
 if (localStorage.length > 0) {
     makeCart();
     makeForms();
@@ -102,46 +102,47 @@ function makeForms() {
        <div>
    </form>`
 
+   // event listener dont si nos variable sont true alors on récuperes les données et on se redirige sur la page validaiton.
+    document.querySelector(".form_container").addEventListener("submit", (e) => {
+    
+        e.preventDefault();
+
+        if (firstName && lastName && eMail && adress && zipCode && phone){
+            getInfoForms()
+            const order = {
+                contact:{
+                    firstName,
+                    lastName,
+                    eMail,
+                    adress,
+                    zipCode,
+                    phone,
+                },
+                product: JSON.parse(localStorage.getItem("product")),
+            }
+            window.location.href="validation.html"
+        }else {
+            alert("Veuillez remplir le formulaire correctement")
+        }
+    })  
+
+    // Récupérer les données de formulaire dans le local storage.
+    function getInfoForms(){
+
+        // Stock mes valeurs dans le local Storage
+
+        localStorage.setItem("user_name", lastName);
+        localStorage.setItem("user_prenom", firstName);
+        localStorage.setItem("user_adress", adress);
+        localStorage.setItem("user_tel", phone);
+        localStorage.setItem("user_zipcode", zipCode);
+        localStorage.setItem("user_email", eMail);
+        localStorage.setItem("user_total_price", document.querySelector(".p_total").textContent);
+    
+    };
 }
 
-// event listener dont si nos variable sont true alors on récuperes les données et on se redirige sur la page validaiton.
-document.querySelector(".form_container").addEventListener("submit", (e) => {
-    
-    e.preventDefault();
 
-    if (firstName && lastName && eMail && adress && zipCode && phone){
-        getInfoForms()
-        const order = {
-            contact:{
-                firstName,
-                lastName,
-                eMail,
-                adress,
-                zipCode,
-                phone,
-            },
-            product: JSON.parse(localStorage.getItem("product")),
-        }
-        window.location.href="validation.html"
-    }else {
-        alert("Veuillez remplir le formulaire correctement")
-    }
-})  
-
-// Récupérer les données de formulaire dans le local storage.
-function getInfoForms(){
-
-    // Stock mes valeurs dans le local Storage
-
-    localStorage.setItem("user_name", lastName);
-    localStorage.setItem("user_prenom", firstName);
-    localStorage.setItem("user_adress", adress);
-    localStorage.setItem("user_tel", phone);
-    localStorage.setItem("user_zipcode", zipCode);
-    localStorage.setItem("user_email", eMail);
-    localStorage.setItem("user_total_price", document.querySelector(".p_total").textContent);
-  
-};
 
 /*********************************************************************************************** INPUTS **********************************************************************/
 
