@@ -4,7 +4,7 @@ function increaseValue() {
   let value = parseInt(document.getElementById('result').value);
   value++;
   if(value >= 20){
-      value = 20
+      value = 20;
   }
   document.getElementById('result').value = value;
 };
@@ -13,12 +13,12 @@ function decreaseValue() {
   let value = parseInt(document.getElementById('result').value);
   value--;
   if(value < 1){
-      value = 1
+      value = 1;
   }
   document.getElementById('result').value = value;
 };
 
-// Créée notre item dans cart depuis nos tableau d'éléments dans le json.
+// Créée nos items dans cart depuis notre tableau d'éléments dans le json.
 
 function makeCart(){
     let test = JSON.parse(localStorage.getItem("product"));
@@ -111,24 +111,40 @@ function makeForms() {
        </div>
        <div class="form_group">
            <label for="tel">Telephone</label>
-           <input type="tel" id="tel" name="user_tel" placeholder="Ex: 06 06 06 06 06" required/>
+           <input type="tel" id="tel" name="user_tel" placeholder="Ex: 06 06 06 06 06" pattern="[0-9]{10}" required/>
        </div>
        <div class="btn_valider">
            <a href="#"><button type="submit" id="btn_test2">Commander</button></a>
        <div>
    </form>`
 
-   // Event listener sur le Form pour récupérer les données de l'user lorsqu'il est submit avec la func "getInfoForms()".
-    
-   document.querySelector(".form_container").addEventListener("submit", () => {
-    
-    getInfoForms()
-
-    })  
 }
 
-// Récupérer les données de formulaire dans le local storage.
+// event listener dont si nos variable sont true alors on récuperes les données et on se redirige sur la page validaiton.
+document.querySelector(".form_container").addEventListener("submit", (e) => {
+    
+    e.preventDefault();
 
+    if (firstName && lastName && eMail && adress && zipCode && phone){
+        getInfoForms()
+        const order = {
+            contact:{
+                firstName,
+                lastName,
+                eMail,
+                adress,
+                zipCode,
+                phone,
+            },
+            product: JSON.parse(localStorage.getItem("product")),
+        }
+        window.location.href="validation.html"
+    }else {
+        alert("Veuillez remplir le formulaire correctement")
+    }
+})  
+
+// Récupérer les données de formulaire dans le local storage.
 function getInfoForms(){
 
     // Stock mes valeurs dans le local Storage
@@ -178,9 +194,9 @@ inputs.forEach((input) => {
     })
 })
 
-
+// Checker d'un input si la regex n'est pas true alors la value du input = null.
 const lnameChecker = (value) => {
-    if (value.length > 0 && (value.length < 3 || value.length > 25)){
+    if (value.length < 3 || value.length > 25){
         errorDisplay("lname")
         lastName = null
     }else if (!value.match(/^[a-zA-Z]*$/)) {
@@ -209,7 +225,11 @@ const fnameChecker = (value) => {
 }
 
 const zipcodeChecker = (value) => {
-    if(!value.match(/^[0-9]{5}/)){
+    if (value.length < 5 || value.length > 5){
+        errorDisplay("zip_code")  
+        zipCode = null
+    }
+    else if(!value.match(/^[0-9]{5}/)){
         errorDisplay("zip_code")  
         zipCode = null
     }else{
@@ -245,7 +265,11 @@ const emailChecker = (value) => {
 }
 
 const telChecker = (value) => {
-    if(!value.match(/^[0-9]{10}/)){
+    if (value.length < 10 || value.length > 10){
+        errorDisplay("tel")
+        phone = null
+    }
+    else if(!value.match(/^[0-9]{10}/)){
         errorDisplay("tel")
         phone = null
     }else{
@@ -254,7 +278,7 @@ const telChecker = (value) => {
     }
 }
 
-// Function pour inputChecker qui permet d'afficher a l'user en changeant le bg en vert si valid ou red si false de notre tag. 
+// Function pour inputChecker qui permet d'afficher a l'user en changeant le bg en red si c'est false. 
 
 function errorDisplay(tag,valid) {
 
