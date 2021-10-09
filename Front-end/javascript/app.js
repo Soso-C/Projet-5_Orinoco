@@ -4,7 +4,7 @@ let url = "http://localhost:3000/api/cameras"
 
 main()
 
-// Func qui appelle toutes les fonctions
+// Func qui attend le retour de getArticles pour executer tous le code, on boucle notre function displayArticle pour créer tous nos articles depuis getArticles qui est un fetch de l'API.
 async function main() {
   const articles = await getArticles()
 
