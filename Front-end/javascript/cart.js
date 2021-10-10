@@ -67,10 +67,10 @@ function clearCart() {
 }
 
 // Affiche notre cart et le form si le localstorage a du contenu sinon affiche :  'Panier vide' dans la page html.
-if (localStorage.length > 0) {
+if (arrayProduct.length > 0) {
     makeCart();
     makeForms();
-}else{
+}else if (arrayProduct.length === 0){
   document.querySelector(".bloc_cart").innerHTML =  
    `<h1 id="cart_title_none">Votre panier ne contient aucun article</h1>`
 };
