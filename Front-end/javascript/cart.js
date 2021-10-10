@@ -1,4 +1,5 @@
 /**************************************************************** MAIN **********************************************************************/
+let arrayProduct = JSON.parse(localStorage.product);
 
 /**************************************************************** CART **********************************************************************/
 
@@ -6,6 +7,7 @@
 function makeCart(){
     let test = JSON.parse(localStorage.getItem("product"));
     let prixTotal = 0;
+    let incrvalue = 1;
 
     document.querySelector(".bloc_cart").innerHTML += `<h2>Mon panier</h2>`;
 
@@ -37,7 +39,7 @@ function makeCart(){
                 <p>Total</p>
                 <h6 class="total_price_elt">${parseInt(test[produit].price) * parseInt(test[produit].quantity)} €</h6>
             </div>
-            <div class="cart_item_clear" onclick="clearCart()"><i class="fas fa-trash-alt"></i></div>
+            <div class="cart_item_clear" onclick="clearItem(${produit})"><i class="fas fa-trash-alt"></i></div>
             </div>
         </div>`
 
@@ -50,9 +52,12 @@ function makeCart(){
     </div>`;
 }
 
-// Clear un item du cart
+// Clear un item du cart avec index comme params
 function clearItem(index){   
-    JSON.parse(localStorage.product)[index] = [];
+    arrayProduct.splice(index,1);
+    localStorage.setItem("product", JSON.stringify(arrayProduct));
+    console.log(JSON.parse(localStorage.product));
+    window.location.reload()
 }
 
 // Clear tous le localstorage et refresh la page.
@@ -60,7 +65,6 @@ function clearCart() {
   localStorage.clear();
   window.location.reload();
 }
-
 
 // Affiche notre cart et le form si le localstorage a du contenu sinon affiche :  'Panier vide' dans la page html.
 if (localStorage.length > 0) {

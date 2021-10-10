@@ -90,7 +90,7 @@ function increaseValue() {
 // Ajoute notre produit dans notre local storage.
 function addToCart() {
   
-  // Objet js qui récupere les données du produit lorsqu'on clic sur ajouter au panier.
+  // on créé un objet js qui récupere les données du produit lorsqu'on clic sur ajouter au panier et qu'on push dans notre local storage.
   let camProduct = {
     name: document.querySelector('p.name_article').textContent,
     price: document.querySelector('p.price_product').textContent,
