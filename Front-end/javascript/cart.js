@@ -50,7 +50,12 @@ function makeCart(){
     </div>`;
 }
 
-// Clear notre cart le localstorage et refresh la page.
+// Clear un item du cart
+function clearItem(index){   
+    JSON.parse(localStorage.product)[index] = [];
+}
+
+// Clear tous le localstorage et refresh la page.
 function clearCart() {
   localStorage.clear();
   window.location.reload();
@@ -109,6 +114,7 @@ function makeForms() {
 
         if (firstName && lastName && eMail && adress && zipCode && phone){
             getInfoForms()
+            // Récupération des infos de l'user ainsi que son panier.
             const order = {
                 contact:{
                     firstName,
@@ -120,6 +126,22 @@ function makeForms() {
                 },
                 product: JSON.parse(localStorage.getItem("product")),
             }
+
+            // Préparation du POST
+            const init = {
+                method : "POST",
+                headers : {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(order),
+                mode: "cors",
+            };    
+            
+            console.log(init);
+
+            // Envoie de la data au backend
+            fetch("http://localhost:3000/api/cameras/order", init)
+            .then(() => console.log("data envoyée"));   
             window.location.href="validation.html"
         }else {
             alert("Veuillez remplir le formulaire correctement")
