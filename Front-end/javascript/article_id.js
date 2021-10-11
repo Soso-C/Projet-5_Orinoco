@@ -1,4 +1,8 @@
 /************************************************************** MAIN  ***********************************************************************************/
+let arrayProduct = [];
+if (localStorage.length > 0){
+  arrayProduct = JSON.parse(localStorage.product);
+}
 
 // S'appel tout seul pour appeler nos 3 fonctions en attendant le résultat async await pour l'attente du retour de notre api.
 (async function(){

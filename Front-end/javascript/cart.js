@@ -1,5 +1,8 @@
 /**************************************************************** MAIN **********************************************************************/
-let arrayProduct = JSON.parse(localStorage.product);
+let arrayProduct = [];
+if (localStorage.length > 0){
+  arrayProduct = JSON.parse(localStorage.product);
+}
 
 /**************************************************************** CART **********************************************************************/
 
@@ -7,7 +10,6 @@ let arrayProduct = JSON.parse(localStorage.product);
 function makeCart(){
     let test = JSON.parse(localStorage.getItem("product"));
     let prixTotal = 0;
-    let incrvalue = 1;
 
     document.querySelector(".bloc_cart").innerHTML += `<h2>Mon panier</h2>`;
 
@@ -70,10 +72,11 @@ function clearCart() {
 if (arrayProduct.length > 0) {
     makeCart();
     makeForms();
-}else if (arrayProduct.length === 0){
-  document.querySelector(".bloc_cart").innerHTML =  
+}else{
+    document.querySelector(".bloc_cart").innerHTML =  
    `<h1 id="cart_title_none">Votre panier ne contient aucun article</h1>`
-};
+   localStorage.removeItem("product")
+}
 
 /*********************************************************************************** FORMULAIRE *****************************************************************************/
 
