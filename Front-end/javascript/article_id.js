@@ -1,9 +1,5 @@
 /************************************************************** MAIN  ***********************************************************************************/
 let arrayProduct = [];
-if (localStorage.length > 0){
-  arrayProduct = JSON.parse(localStorage.product);
-}
-
 // S'appel tout seul pour appeler nos 3 fonctions en attendant le résultat async await pour l'attente du retour de notre api.
 (async function(){
     const articleId = getArticleId()
@@ -60,7 +56,13 @@ function hyrdrateArticle(article) {
     </div> 
     <div class="btn_price">
         <a href="#"><button type="submit" id="btn_test2" onclick="addToCart()" >Ajouter au panier</button></a>
-    </div>`     
+    </div>`
+    /********************************************************** Option pour nbr CART affichage pour l'id ***********************************************************/
+    let arrayProduct = []
+    if (localStorage.length > 0){
+      arrayProduct = JSON.parse(localStorage.product);
+      document.getElementById("cart_elt").innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`
+    }    
 };
 
 // Fonction qui retourne ma liste de lenses.
@@ -117,6 +119,12 @@ function addToCart() {
     productInLocalStorage.push(camProduct);
     localStorage.setItem("product", JSON.stringify(productInLocalStorage));
   }
-};
+  /********************************************************** Option pour nbr CART affichage ***********************************************************/
 
+  let arrayProduct = []
+    if (localStorage.length > 0){
+      arrayProduct = JSON.parse(localStorage.product);
+      document.getElementById("cart_elt").innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`
+    }
+};
 

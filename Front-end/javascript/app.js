@@ -2,6 +2,7 @@
 
 let url = "http://localhost:3000/api/cameras"
 
+
 main()
 
 // Func qui attend le retour de getArticles pour executer tous le code, on boucle notre function displayArticle pour créer tous nos articles depuis getArticles qui est un fetch de l'API.
@@ -40,4 +41,9 @@ function displayArticle(article){
   </div>`         
 }
 
-
+/********************************************************** Option pour CART affichage ***********************************************************/
+let arrayProduct = [];
+  if (localStorage.length > 0){
+    arrayProduct = JSON.parse(localStorage.product);
+    document.getElementById("cart_elt").innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`
+  }

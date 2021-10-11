@@ -1,8 +1,10 @@
 /**************************************************************** MAIN **********************************************************************/
 let arrayProduct = [];
-if (localStorage.length > 0){
-  arrayProduct = JSON.parse(localStorage.product);
-}
+  if (localStorage.length > 0){
+    arrayProduct = JSON.parse(localStorage.product);
+    document.getElementById("cart_elt").innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`
+  }
+
 
 /**************************************************************** CART **********************************************************************/
 
@@ -75,6 +77,7 @@ if (arrayProduct.length > 0) {
 }else{
     document.querySelector(".bloc_cart").innerHTML =  
    `<h1 id="cart_title_none">Votre panier ne contient aucun article</h1>`
+   document.getElementById("cart_elt").innerHTML = `<i class="fas fa-shopping-cart"></i>Mon panier</a>`
    localStorage.removeItem("product")
 }
 
