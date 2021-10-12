@@ -1,4 +1,5 @@
 /**************************************************************** MAIN **********************************************************************/
+/************************************************************ Afficher le nombre d'objet dans le logo panier **************************/
 let arrayProduct = [];
   if (localStorage.length > 0){
     arrayProduct = JSON.parse(localStorage.product);
@@ -51,10 +52,18 @@ function makeCart(){
     };
     document.querySelector(".bloc_cart").innerHTML += `
     <div class="cart_total">
-      <p>Prix Total :</p>
-      <p class="p_total">${prixTotal}€</p>
+        <div class="btn_cont">
+           <a href="#"><button type="submit" class="btn_test b_red" onclick="clearCart()">Vider le panier</button></a>
+        </div>
+        <div class="pt_cont">
+        <p>Prix Total :</p>
+        <p class="p_total">${prixTotal}€</p>
+        </div>
+    </div>
+        
     </div>`;
 }
+
 
 // Clear un item du cart avec index comme params
 function clearItem(index){   
@@ -66,7 +75,7 @@ function clearItem(index){
 
 // Clear tous le localstorage et refresh la page.
 function clearCart() {
-  localStorage.clear();
+  localStorage.removeItem("product");
   window.location.reload();
 }
 
@@ -213,7 +222,7 @@ inputs.forEach((input) => {
     })
 })
 
-// Checker d'un input si la regex n'est pas true alors la value du input = null.
+// Checker d'un input si la regex n'est pas good alors la value du input = null sinon notre variable contient l'input de l'user.
 const lnameChecker = (value) => {
     if (value.length < 3 || value.length > 25){
         errorDisplay("lname")

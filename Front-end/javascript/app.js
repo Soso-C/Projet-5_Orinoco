@@ -37,7 +37,7 @@ function displayArticle(article){
         <p class="desc_article">${article.description}</p>
         <p class="price_article">${article.price / 100}€</p>
     </div>
-    <a href="produit.html?id=${article._id}"><button type="submit" class="btn_test">Acheter</button></a>
+    <a href="produit.html?id=${article._id}"><button type="submit" class="btn_test b_yellow">Acheter</button></a>
   </div>`         
 }
 

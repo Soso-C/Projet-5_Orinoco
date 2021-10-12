@@ -208,12 +208,20 @@ main {
 .btn_test {
     border-color: transparent;
     border-radius: 30px;
-    background-color: yellow;
     padding: 10px;
     font-size: 1.1em;
     width: 150px;
     font-weight: 500;
 }
+
+.b_yellow {
+    background: yellow;
+}
+
+.b_red {
+    background: red;
+}
+
 .btn_test:hover {
     cursor: pointer;
     opacity: 0.8;
@@ -474,6 +482,12 @@ h6 {
     margin: 2em;
 }
 
+.pt_cont {
+    display: flex;
+    margin-left: 2em;
+}
+
+
 /************************************************************** 4TH PAGE VALIDATION **********************************************************************/
 
 
@@ -518,7 +532,7 @@ h6 {
 @media screen and (max-width: 700px) {
 
     .cart_elt_cont {
-        width: 90%;
+        width: 95%;
         padding: 0.5em;
         text-align: center;
         display: flex;
@@ -564,7 +578,7 @@ h6 {
         padding: 0.8em;
     }
     h6 {
-        font-size: 1em;
+        font-size: 0.95em;
         margin: 0.6em;
     }
 
@@ -578,6 +592,14 @@ h6 {
 
     .cart_text_cont {
         width: 30%;
+    }
+    .pt_cont {
+        margin-left: 1em;
+        font-size: 0.9em;
+    }
+    .cart_elt_cont p {
+        padding: 0.8em;
+        font-size: 0.95em;
     }
 }
 
