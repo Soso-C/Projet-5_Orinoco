@@ -69,7 +69,7 @@ a {
 }
 
 .top_nav a {
-    padding: 1em;
+    padding: 0.6em;
 }
 #cart_elt {
     display: flex;
@@ -428,7 +428,7 @@ h6 {
     padding: 1em;
     border-radius: 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .p_total {
@@ -610,7 +610,7 @@ h6 {
     top: 0;
     font-size: 0.9em;
     width: 20px;
-    background: black;
+    background: #222;
     border-radius: 50%;
     text-align: center;
     margin-top: 0.2em;
