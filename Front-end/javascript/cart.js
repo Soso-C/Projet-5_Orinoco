@@ -221,6 +221,7 @@ inputs.forEach((input) => {
         }
     })
 })
+                        /***************************************** Checker et Regexp pour chaque type d'input *****************************************/
 
 // Checker d'un input si la regex n'est pas good alors la value du input = null sinon notre variable contient l'input de l'user.
 const lnameChecker = (value) => {
@@ -318,27 +319,6 @@ function errorDisplay(tag,valid) {
         container.classList.remove('errorInput');
     }
 }
-
-
-/********************************************************************************** Button + - Cart **************************************************************************/
-
-function increaseValue() {
-    let value = parseInt(document.getElementById('result').value);
-    value++;
-    if(value >= 20){
-        value = 20;
-    }
-    document.getElementById('result').value = value;
-  };
-  
-  function decreaseValue() {
-    let value = parseInt(document.getElementById('result').value);
-    value--;
-    if(value < 1){
-        value = 1;
-    }
-    document.getElementById('result').value = value;
-  };
 
 
 

@@ -35,7 +35,7 @@ function timerValidation() {
     setInterval(() => {
       let secondes = parseInt(temps % 60, 10);
       secondes = secondes < 10 ? secondes : secondes;
-      timerElement.innerText = `Redirection a l'accueil dans : ${secondes} secondes`;
+      timerElement.innerText = `Redirection a l'accueil dans : ${secondes} seconde(s)`;
       temps = temps <= 0 ? 0 : temps - 1;
     }, 1000)
 }
