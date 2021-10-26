@@ -1,24 +1,24 @@
 /**************************************************************** MAIN **********************************************************************/
 /************************************************************ Afficher le nombre d'objet dans le logo panier **************************/
 let arrayProduct = [];
-  if (localStorage.length > 0){
-    arrayProduct = JSON.parse(localStorage.product);
-    document.getElementById("cart_elt").innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`
-  }
-
+if (localStorage.length > 0) {
+  arrayProduct = JSON.parse(localStorage.product);
+  document.getElementById(
+    "cart_elt"
+  ).innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`;
+}
 
 /**************************************************************** CART **********************************************************************/
 
 // Créée nos items dans cart depuis notre tableau d'éléments dans le json.
-function makeCart(){
-    let test = JSON.parse(localStorage.getItem("product"));
-    let prixTotal = 0;
+function makeCart() {
+  let test = JSON.parse(localStorage.getItem("product"));
+  let prixTotal = 0;
 
-    document.querySelector(".bloc_cart").innerHTML += `<h2>Mon panier</h2>`;
+  document.querySelector(".bloc_cart").innerHTML += `<h2>Mon panier</h2>`;
 
-    for (produit in test) {
-
-        document.querySelector(".bloc_cart").innerHTML +=`
+  for (produit in test) {
+    document.querySelector(".bloc_cart").innerHTML += `
         
         <div class="cart_elt_cont">
             <div class="cart_img_title">
@@ -42,15 +42,19 @@ function makeCart(){
             </div>
             <div class="cart_text_cont">
                 <p>Total</p>
-                <h6 class="total_price_elt">${parseInt(test[produit].price) * parseInt(test[produit].quantity)} €</h6>
+                <h6 class="total_price_elt">${
+                  parseInt(test[produit].price) *
+                  parseInt(test[produit].quantity)
+                } €</h6>
             </div>
             <div class="cart_item_clear" onclick="clearItem(${produit})"><i class="fas fa-trash-alt"></i></div>
             </div>
-        </div>`
+        </div>`;
 
-        prixTotal += (parseInt(test[produit].price) * parseInt(test[produit].quantity));
-    };
-    document.querySelector(".bloc_cart").innerHTML += `
+    prixTotal +=
+      parseInt(test[produit].price) * parseInt(test[produit].quantity);
+  }
+  document.querySelector(".bloc_cart").innerHTML += `
     <div class="cart_total">
         <div class="btn_cont">
            <a href="#"><button type="submit" class="btn_test b_red" onclick="clearCart()">Vider le panier</button></a>
@@ -64,13 +68,12 @@ function makeCart(){
     </div>`;
 }
 
-
 // Clear un item du cart avec index comme params
-function clearItem(index){   
-    arrayProduct.splice(index,1);
-    localStorage.setItem("product", JSON.stringify(arrayProduct));
-    console.log(JSON.parse(localStorage.product));
-    window.location.reload()
+function clearItem(index) {
+  arrayProduct.splice(index, 1);
+  localStorage.setItem("product", JSON.stringify(arrayProduct));
+  console.log(JSON.parse(localStorage.product));
+  window.location.reload();
 }
 
 // Clear tous le localstorage et refresh la page.
@@ -81,21 +84,25 @@ function clearCart() {
 
 // Affiche notre cart et le form si le localstorage a du contenu sinon affiche :  'Panier vide' dans la page html.
 if (arrayProduct.length > 0) {
-    makeCart();
-    makeForms();
-}else{
-    document.querySelector(".bloc_cart").innerHTML =  
-   `<h1 id="cart_title_none">Votre panier ne contient aucun article</h1>`
-   document.getElementById("cart_elt").innerHTML = `<i class="fas fa-shopping-cart"></i>Mon panier</a>`
-   localStorage.removeItem("product")
+  makeCart();
+  makeForms();
+} else {
+  document.querySelector(
+    ".bloc_cart"
+  ).innerHTML = `<h1 id="cart_title_none">Votre panier ne contient aucun article</h1>`;
+  document.getElementById(
+    "cart_elt"
+  ).innerHTML = `<i class="fas fa-shopping-cart"></i>Mon panier</a>`;
+  localStorage.removeItem("product");
 }
 
 /*********************************************************************************** FORMULAIRE *****************************************************************************/
 
-// Créé le formulaire 
+// Créé le formulaire
 function makeForms() {
-
-    document.querySelector(".bloc_cart").innerHTML += `<h2 id="form_h2">Formulaire</h2>
+  document.querySelector(
+    ".bloc_cart"
+  ).innerHTML += `<h2 id="form_h2">Formulaire de commande</h2>
     <form class="form_container" action="validation.html">
        <div class="form_group">
            <label for="lname">Nom</label>
@@ -124,209 +131,192 @@ function makeForms() {
        <div class="btn_valider">
            <a href="#"><button type="submit" id="btn_test2">Commander</button></a>
        <div>
-   </form>`
+   </form>`;
 
-   // event listener dont si nos variable sont true alors on récuperes les données et on se redirige sur la page validaiton.
-    document.querySelector(".form_container").addEventListener("submit", (e) => {
-    
-        e.preventDefault();
+  // event listener dont si nos variable sont true alors on récuperes les données et on se redirige sur la page validaiton.
+  document.querySelector(".form_container").addEventListener("submit", (e) => {
+    e.preventDefault();
 
-        if (firstName && lastName && eMail && adress && zipCode && phone){
-            getInfoForms()
-            // Récupération des infos de l'user ainsi que son panier.
-            const order = {
-                contact:{
-                    firstName,
-                    lastName,
-                    eMail,
-                    adress,
-                    zipCode,
-                    phone,
-                },
-                product: JSON.parse(localStorage.getItem("product")),
-            }
+    if (firstName && lastName && eMail && adress && zipCode && phone) {
+      getInfoForms();
+      // Récupération des infos de l'user ainsi que son panier pour le back end.
+      const order = {
+        contact: {
+          firstName,
+          lastName,
+          eMail,
+          adress,
+          zipCode,
+          phone,
+        },
+        product: JSON.parse(localStorage.getItem("product")),
+      };
 
-            // Préparation du POST
-            const init = {
-                method : "POST",
-                headers : {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(order),
-                mode: "cors",
-            };    
-            
-            console.log(init);
+      // Préparation du POST
+      const init = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+        mode: "cors",
+      };
 
-            // Envoie de la data au backend
-            fetch("http://localhost:3000/api/cameras/order", init)
-            .then(() => console.log("data envoyée"));   
-            window.location.href="validation.html"
-        }else {
-            alert("Veuillez remplir le formulaire correctement")
-        }
-    })  
+      console.log(init);
 
-    // Récupérer les données de formulaire dans le local storage.
-    function getInfoForms(){
+      // Envoie de la data au backend
+      fetch("http://localhost:3000/api/cameras/order", init).then(() =>
+        console.log("data envoyée")
+      );
+      window.location.href = "validation.html";
+    } else {
+      alert("Veuillez remplir le formulaire correctement");
+    }
+  });
 
-        // Stock mes valeurs dans le local Storage
+  // Récupérer les données de formulaire dans le local storage.
+  function getInfoForms() {
 
-        localStorage.setItem("user_name", lastName);
-        localStorage.setItem("user_prenom", firstName);
-        localStorage.setItem("user_adress", adress);
-        localStorage.setItem("user_tel", phone);
-        localStorage.setItem("user_zipcode", zipCode);
-        localStorage.setItem("user_email", eMail);
-        localStorage.setItem("user_total_price", document.querySelector(".p_total").textContent);
-    
-    };
+    localStorage.setItem("user_name", lastName);
+    localStorage.setItem("user_prenom", firstName);
+    localStorage.setItem("user_adress", adress);
+    localStorage.setItem("user_tel", phone);
+    localStorage.setItem("user_zipcode", zipCode);
+    localStorage.setItem("user_email", eMail);
+    localStorage.setItem(
+      "user_total_price",
+      document.querySelector(".p_total").textContent
+    );
+  }
 }
-
-
 
 /*********************************************************************************************** INPUTS **********************************************************************/
 
-// Inputs checker 
+// Inputs checker
 
 let firstName, lastName, adress, phone, zipCode, eMail;
-const inputs = document.querySelectorAll('input[type=text],input[type=email],input[type=tel]');
-
+const inputs = document.querySelectorAll(
+  "input[type=text],input[type=email],input[type=tel]"
+);
 
 // Watch la value de chaque input.
 
 inputs.forEach((input) => {
-    input.addEventListener("input", (e) => {
-        switch (e.target.id){
-            case "fname":
-                fnameChecker(e.target.value);
-                break;
-            case "lname":
-                lnameChecker(e.target.value);
-                break;
-            case "zip_code":
-                zipcodeChecker(e.target.value)
-                break;   
-            case "mail":
-                emailChecker(e.target.value)
-                break;  
-            case "tel":
-                telChecker(e.target.value)
-                break;
-            case "adress":
-                adressChecker(e.target.value)
-                break;
-            default:
-                null;   
-        }
-    })
-})
-                        /***************************************** Checker et Regexp pour chaque type d'input *****************************************/
+  input.addEventListener("input", (e) => {
+    switch (e.target.id) {
+      case "fname":
+        fnameChecker(e.target.value);
+        break;
+      case "lname":
+        lnameChecker(e.target.value);
+        break;
+      case "zip_code":
+        zipcodeChecker(e.target.value);
+        break;
+      case "mail":
+        emailChecker(e.target.value);
+        break;
+      case "tel":
+        telChecker(e.target.value);
+        break;
+      case "adress":
+        adressChecker(e.target.value);
+        break;
+      default:
+        null;
+    }
+  });
+});
+/***************************************** Checker et Regexp pour chaque type d'input *****************************************/
 
-// Checker d'un input si la regex n'est pas good alors la value du input = null sinon notre variable contient l'input de l'user.
+// Checker d'un input si la regexp n'est pas good alors la value du input = null sinon notre variable contient l'input de l'user.
 const lnameChecker = (value) => {
-    if (value.length < 3 || value.length > 25){
-        errorDisplay("lname")
-        lastName = null;
-    }else if (!value.match(/^[a-zA-Z]*$/)) {
-        errorDisplay("lname");
-        lastName = null;
-    }
-    else{
-        errorDisplay("lname", true)
-        lastName = value;
-    }
-    
-}
+  if (value.length < 3 || value.length > 25) {
+    errorDisplay("lname");
+    lastName = null;
+  } else if (!value.match(/^[a-zA-Z]*$/)) {
+    errorDisplay("lname");
+    lastName = null;
+  } else {
+    errorDisplay("lname", true);
+    lastName = value;
+  }
+};
 
 const fnameChecker = (value) => {
-    if (value.length < 3 || value.length > 25){
-        errorDisplay("fname")
-        firstName = null;
-    }else if (!value.match(/^[a-zA-Z]*$/)) {
-        errorDisplay("fname");
-        firstName = null;
-    }
-    else{
-        errorDisplay("fname", true)
-        firstName = value;
-    }
-}
+  if (value.length < 3 || value.length > 25) {
+    errorDisplay("fname");
+    firstName = null;
+  } else if (!value.match(/^[a-zA-Z]*$/)) {
+    errorDisplay("fname");
+    firstName = null;
+  } else {
+    errorDisplay("fname", true);
+    firstName = value;
+  }
+};
 
 const zipcodeChecker = (value) => {
-    if (value.length < 5 || value.length > 5){
-        errorDisplay("zip_code");  
-        zipCode = null;
-    }
-    else if(!value.match(/^[0-9]{5}/)){
-        errorDisplay("zip_code");  
-        zipCode = null;
-    }else{
-        errorDisplay("zip_code",true);
-        zipCode = value;
-    }
-}
+  if (value.length < 5 || value.length > 5) {
+    errorDisplay("zip_code");
+    zipCode = null;
+  } else if (!value.match(/^[0-9]{5}/)) {
+    errorDisplay("zip_code");
+    zipCode = null;
+  } else {
+    errorDisplay("zip_code", true);
+    zipCode = value;
+  }
+};
 
 const adressChecker = (value) => {
-    if (value.length < 8 || value.length > 35){
-        errorDisplay("adress");
-        adress = null;  
-    }else if (!value.match(/^[a-zA-Z0-9\s]*$/)) {
-        errorDisplay("adress");
-        adress = null;
-    }
-    else{
-        errorDisplay("adress", true)
-        adress = value;
-    }
-}
-
+  if (value.length < 8 || value.length > 35) {
+    errorDisplay("adress");
+    adress = null;
+  } else if (!value.match(/^[a-zA-Z0-9\s]*$/)) {
+    errorDisplay("adress");
+    adress = null;
+  } else {
+    errorDisplay("adress", true);
+    adress = value;
+  }
+};
 
 const emailChecker = (value) => {
-    let emailRegex = new RegExp('^[a-zA-Z0-9.-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
-    if(!value.match(emailRegex)){
-        errorDisplay("mail");
-        eMail = null;    
-    }else{
-        errorDisplay("mail", true);
-        eMail = value;
-    }
-}
+  let emailRegex = new RegExp(
+    "^[a-zA-Z0-9.-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$",
+    "g"
+  );
+  if (!value.match(emailRegex)) {
+    errorDisplay("mail");
+    eMail = null;
+  } else {
+    errorDisplay("mail", true);
+    eMail = value;
+  }
+};
 
 const telChecker = (value) => {
-    if (value.length < 10 || value.length > 10){
-        errorDisplay("tel");
-        phone = null;
-    }
-    else if(!value.match(/^[0-9]{10}/)){
-        errorDisplay("tel");
-        phone = null;
-    }else{
-        errorDisplay("tel", true);
-        phone = value;
-    }
+  if (value.length < 10 || value.length > 10) {
+    errorDisplay("tel");
+    phone = null;
+  } else if (!value.match(/^[0-9]{10}/)) {
+    errorDisplay("tel");
+    phone = null;
+  } else {
+    errorDisplay("tel", true);
+    phone = value;
+  }
+};
+
+// Function pour inputChecker qui permet d'afficher a l'user en changeant le bg en red si c'est false.
+
+function errorDisplay(tag, valid) {
+  const container = document.getElementById(tag);
+
+  if (!valid) {
+    container.classList.add("errorInput");
+  } else {
+    container.classList.remove("errorInput");
+  }
 }
-
-// Function pour inputChecker qui permet d'afficher a l'user en changeant le bg en red si c'est false. 
-
-function errorDisplay(tag,valid) {
-
-    const container = document.getElementById(tag);
-    
-    if (!valid){
-        container.classList.add("errorInput");
-    }else {
-        container.classList.remove('errorInput');
-    }
-}
-
-
-
-
-
-
-
-
-
-
-

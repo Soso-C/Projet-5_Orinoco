@@ -1,37 +1,36 @@
 /************************************************************** MAIN  ***********************************************************************************/
 let arrayProduct = [];
 // S'appel tout seul pour appeler nos 3 fonctions en attendant le résultat async await pour l'attente du retour de notre api.
-(async function(){
-    const articleId = getArticleId()
-    const article = await getArticle(articleId)
-    hyrdrateArticle(article)   
-})()
-
+(async function () {
+  const articleId = getArticleId();
+  const article = await getArticle(articleId);
+  hyrdrateArticle(article);
+})();
 
 // Retourne l'url de notre élement avec son id.
-function getArticleId(){
-    return new URL(location.href).searchParams.get("id")
+function getArticleId() {
+  return new URL(location.href).searchParams.get("id");
 }
 
 // Appel a l'api pour nous retourner les données de l'id en question.
-function getArticle(articleId){
-    return fetch(`http://localhost:3000/api/cameras/${articleId}`)
-  .then(function(response) {
-    return response.json();
-  }).then(function(data) {
-    return data;
-  }).catch(function(error){
-    alert(error)
-  })
+function getArticle(articleId) {
+  return fetch(`http://localhost:3000/api/cameras/${articleId}`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      return data;
+    })
+    .catch(function (error) {
+      alert(error);
+    });
 }
 
 // Créer l'article avec article en params
 function hyrdrateArticle(article) {
+  const lens = createLenses(article.lenses);
 
-    const lens = createLenses(article.lenses);
-
-    document.getElementById("test1").innerHTML +=
-    `
+  document.getElementById("test1").innerHTML += `
     <div><img class="img_product" src="${article.imageUrl}" alt=""></div>
     <div class="art_name_price">
         <p class="name_article">${article.name}</p>
@@ -56,75 +55,76 @@ function hyrdrateArticle(article) {
     </div> 
     <div class="btn_price">
         <a href="#"><button type="submit" id="btn_test2" onclick="addToCart()" >Ajouter au panier</button></a>
-    </div>`
-    /********************************************************** Option pour nbr CART affichage pour l'id ***********************************************************/
-    let arrayProduct = []
-    if (localStorage.length > 0){
-      arrayProduct = JSON.parse(localStorage.product);
-      document.getElementById("cart_elt").innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`
-    }    
-};
+    </div>`;
+
+  /********************************************************** Option pour nbr CART affichage pour ArticleID ***********************************************************/
+  if (localStorage.length > 0) {
+    arrayProduct = JSON.parse(localStorage.product);
+    document.getElementById(
+      "cart_elt"
+    ).innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`;
+  }
+}
 
 // Fonction qui retourne ma liste de lenses.
 function createLenses(lenses) {
-    option = "";
-    for (elt of lenses) {
-       option += `<option class="opt_lens"> ${elt}`
-    }
-    return option
-};
+  option = "";
+  for (elt of lenses) {
+    option += `<option class="opt_lens"> ${elt}`;
+  }
+  return option;
+}
 
 /******************************************   Button + -  ***********************************************/
 
 function increaseValue() {
-    let value = parseInt(document.getElementById('result').value);
-    value++;
-    document.getElementById('result').value = value;
-  };
+  let value = parseInt(document.getElementById("result").value);
+  value++;
+  document.getElementById("result").value = value;
+}
 
-  function decreaseValue() {
-    let value = parseInt(document.getElementById('result').value);
-    value--;
-    if(value < 1){
-        value = 1
-    }
-    document.getElementById('result').value = value;
-  };
+function decreaseValue() {
+  let value = parseInt(document.getElementById("result").value);
+  value--;
+  if (value < 1) {
+    value = 1;
+  }
+  document.getElementById("result").value = value;
+}
 
 /****************************************** Local Storage ********************************************/
 
 // Ajoute notre produit dans notre local storage.
 function addToCart() {
-  
   // on créé un objet js qui récupere les données du produit lorsqu'on clic sur ajouter au panier et on le push dans notre local storage.
   let camProduct = {
-    name: document.querySelector('p.name_article').textContent,
-    price: document.querySelector('p.price_product').textContent,
-    quantity: document.getElementById('result').value,
-    lense: document.querySelector('#lent_prod').value,
-    imgUrl:document.querySelector('.img_product').src,
+    name: document.querySelector("p.name_article").textContent,
+    price: document.querySelector("p.price_product").textContent,
+    quantity: document.getElementById("result").value,
+    lense: document.querySelector("#lent_prod").value,
+    imgUrl: document.querySelector(".img_product").src,
     id: getArticleId(),
   };
-  
+
   let productInLocalStorage = JSON.parse(localStorage.getItem("product"));
 
   // si il y a deja des produits dans mon local storage
-  if(productInLocalStorage){
+  if (productInLocalStorage) {
     productInLocalStorage.push(camProduct);
     localStorage.setItem("product", JSON.stringify(productInLocalStorage));
   }
   // Si il y a pas de produit dans le local storage
-  else{
+  else {
     productInLocalStorage = [];
     productInLocalStorage.push(camProduct);
     localStorage.setItem("product", JSON.stringify(productInLocalStorage));
   }
   /********************************************************** Option pour nbr CART affichage ***********************************************************/
 
-  let arrayProduct = []
-    if (localStorage.length > 0){
-      arrayProduct = JSON.parse(localStorage.product);
-      document.getElementById("cart_elt").innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`
-    }
-};
-
+  if (localStorage.length > 0) {
+    arrayProduct = JSON.parse(localStorage.product);
+    document.getElementById(
+      "cart_elt"
+    ).innerHTML = `<div><span id="nbr_article">${arrayProduct.length}</span></div><i class="fas fa-shopping-cart"></i>Mon panier</a>`;
+  }
+}
